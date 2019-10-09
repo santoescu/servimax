@@ -4,10 +4,10 @@ from django import forms
 # Create your models here.
 
 class Administrador (models.Model):
+    Id_Admin = models.CharField(max_length=10)
     Primer_Apellido = models.CharField(max_length=35)
     Segundo_Apellido = models.CharField(max_length=35)
     Nombres = models.CharField(max_length=35)
-    Id_Admin = models.CharField(max_length=10)
     Celular = models.CharField(max_length=35)
     Mail = forms.EmailField(help_text='Ingese un email válido, por favor.')
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
@@ -22,10 +22,10 @@ class Administrador (models.Model):
         return self.obtenerDatosAdmin()
 
 class Cliente(models.Model):
+    Id_Cliente = models.CharField(max_length=10)
     Primer_Apellido = models.CharField(max_length=35)
     Segundo_Apellido = models.CharField(max_length=35)
     Nombres = models.CharField(max_length=35)
-    Id_Cliente = models.CharField(max_length=10)
     Id_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)
     Celular = models.CharField(max_length=35)
     Mail = forms.EmailField(help_text='Ingrese un email válido, por favor')
@@ -41,10 +41,10 @@ class Cliente(models.Model):
         return self.obtenerDatosCliente()
 
 class Trabajador (models.Model):
+    Id_Trabajador = models.CharField(max_length=10)
     Primer_Apellido = models.CharField(max_length=35)
     Segundo_Apellido = models.CharField(max_length=35)
     Nombres = models.CharField(max_length=35)
-    Id_Trabajador = models.CharField(max_length=10)
     Id_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)
     Celular = models.CharField(max_length=35)
     Mail = forms.EmailField(help_text='Ingese un email válido, por favor.')
