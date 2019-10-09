@@ -5,9 +5,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Transacciones</a>
-      <a mat-list-item href="#">Herramientas</a>
-      <a mat-list-item href="#">Inventario</a>
+      <a mat-list-item href="#" [routerLink]="['transacciones']">Transacciones</a>
+      <a mat-list-item href="#" [routerLink]="['herramientas']">Herramientas</a>
+      <a mat-list-item href="#" [routerLink]="['inventario']">Inventario</a>
       <a mat-list-item href="#">Cerrar sesión</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -24,5 +24,8 @@
       <span>Servimax</span>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <div class="container">
+    <router-outlet></router-outlet>
+  </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
