@@ -20,7 +20,9 @@ import { InventarioComponent } from './inventario/inventario.component'
 //Rutas
 import {APP_ROUTING} from './app.routes';
 
-
+//servicio
+import {InventarioService} from './app.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {APP_ROUTING} from './app.routes';
     MenuComponent,
     NavigationComponent,
     CalculadoraComponent,
-    InventarioComponent
+    InventarioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,9 @@ import {APP_ROUTING} from './app.routes';
     MatListModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    InventarioService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
