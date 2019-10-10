@@ -13,7 +13,7 @@ const ROUTES: Routes = [
     { path: 'transacciones', component: MenuComponent},
     { path: 'herramientas', component: CalculadoraComponent},
     { path: 'inventario', component: InventarioComponent},
-    { path: '**', pathMatch: 'full', redirectTo: 'login'}
+ //  { path: '**', pathMatch: 'full', redirectTo: 'login'}
 
 ];
 
