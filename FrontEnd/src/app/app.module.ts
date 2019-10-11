@@ -23,7 +23,8 @@ import {APP_ROUTING} from './app.routes';
 //servicio
 import {InventarioService} from './app.service';
 import { LoginComponent } from './login/login.component';
-import { RegistrarComponent } from './registrar/registrar.component';
+import { RegistrarComponent } from './usuarios/registrar/registrar.component';
+import { ListaComponent } from './usuarios/lista/lista.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegistrarComponent } from './registrar/registrar.component';
     CalculadoraComponent,
     InventarioComponent,
     LoginComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    ListaComponent,
   ],
   imports: [
     BrowserModule,
