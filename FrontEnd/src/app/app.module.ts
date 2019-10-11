@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
 
 //Componentes
 import { MenuComponent } from './menu/menu.component';
@@ -25,6 +26,11 @@ import {InventarioService} from './app.service';
 import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './usuarios/registrar/registrar.component';
 import { ListaComponent } from './usuarios/lista/lista.component';
+
+//guards
+import { LoginGuard } from './login.guard';
+import { NoLoginGuard } from './no-login.guard';
+
 
 @NgModule({
   declarations: [
@@ -47,10 +53,11 @@ import { ListaComponent } from './usuarios/lista/lista.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    APP_ROUTING
+    APP_ROUTING,
+    FormsModule
   ],
   providers: [
-    InventarioService
+    InventarioService, LoginGuard, NoLoginGuard
   ],
   bootstrap: [AppComponent]
 })
