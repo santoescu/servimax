@@ -5,15 +5,17 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {MenuComponent} from './menu/menu.component';
 import {CalculadoraComponent} from './calculadora/calculadora.component';
 import {InventarioComponent} from './inventario/inventario.component';
+import { LoginGuard } from './login.guard';
+import { NoLoginGuard } from './no-login.guard';
 
 const ROUTES: Routes = [
 
-    { path: 'login', component: LoginComponent},
+    { path: 'login', component: LoginComponent, canActivate: [NoLoginGuard]},
     { path: 'home', component: NavigationComponent},
-    { path: 'transacciones', component: MenuComponent},
-    { path: 'herramientas', component: CalculadoraComponent},
-    { path: 'inventario', component: InventarioComponent},
- //  { path: '**', pathMatch: 'full', redirectTo: 'login'}
+    { path: 'transacciones', component: MenuComponent, canActivate: [LoginGuard]},
+    { path: 'herramientas', component: CalculadoraComponent, canActivate: [LoginGuard]},
+    { path: 'inventario', component: InventarioComponent, canActivate: [LoginGuard]},
+    { path: '**', pathMatch: 'full', redirectTo: 'login'}
 
 ];
 
