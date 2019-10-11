@@ -24,7 +24,8 @@ import {APP_ROUTING} from './app.routes';
 //servicio
 import {InventarioService} from './app.service';
 import { LoginComponent } from './login/login.component';
-import { FilterPipe } from './pipes/filter.pipe';
+import { RegistrarComponent } from './usuarios/registrar/registrar.component';
+import { ListaComponent } from './usuarios/lista/lista.component';
 
 //guards
 import { LoginGuard } from './login.guard';
@@ -39,7 +40,8 @@ import { NoLoginGuard } from './no-login.guard';
     CalculadoraComponent,
     InventarioComponent,
     LoginComponent,
-    FilterPipe
+    RegistrarComponent,
+    ListaComponent,
   ],
   imports: [
     BrowserModule,
