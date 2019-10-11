@@ -5,6 +5,7 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {MenuComponent} from './menu/menu.component';
 import {CalculadoraComponent} from './calculadora/calculadora.component';
 import {InventarioComponent} from './inventario/inventario.component';
+import {RegistrarComponent} from './registrar/registrar.component';
 
 const ROUTES: Routes = [
 
@@ -13,6 +14,7 @@ const ROUTES: Routes = [
     { path: 'transacciones', component: MenuComponent},
     { path: 'herramientas', component: CalculadoraComponent},
     { path: 'inventario', component: InventarioComponent},
+    {path: 'registrar',component: RegistrarComponent}
  //  { path: '**', pathMatch: 'full', redirectTo: 'login'}
 
 ];

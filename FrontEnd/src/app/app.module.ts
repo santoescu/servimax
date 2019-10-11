@@ -23,7 +23,7 @@ import {APP_ROUTING} from './app.routes';
 //servicio
 import {InventarioService} from './app.service';
 import { LoginComponent } from './login/login.component';
-import { FilterPipe } from './pipes/filter.pipe';
+import { RegistrarComponent } from './registrar/registrar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     CalculadoraComponent,
     InventarioComponent,
     LoginComponent,
-    FilterPipe
+    RegistrarComponent
   ],
   imports: [
     BrowserModule,
