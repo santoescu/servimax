@@ -16,7 +16,7 @@ const ROUTES: Routes = [
     { path: 'herramientas', component: CalculadoraComponent},
     { path: 'inventario', component: InventarioComponent},
 	{ path: 'usuarios', component: ListaComponent},
-	{ path: 'registar', component: RegistrarComponent},
+	{ path: 'registrar', component: RegistrarComponent},
 
  //  { path: '**', pathMatch: 'full', redirectTo: 'login'}
 
