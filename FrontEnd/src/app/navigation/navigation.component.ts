@@ -1,21 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+	routes: Object[] = [
+	{
+		title: 'Transacciones',
+		route: '/menu',
+		icon: 'account_balance',
+	},
+	{
+		title: 'Herramientas',
+		route: '/herramientas',
+		icon: 'build',
+	},
+	{
+		title: 'Inventario',
+		route: '/inventario',
+		icon: 'assignment',
+	},
+	{
+		title: 'Clientes',
+		route: '/clientes',
+		icon: 'group',
+	},
+	{
+		title: 'Cerrar sesion',
+		route: '/login',
+		icon: 'cancel',
+	},
+	]
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor() { }
+
+  ngOnInit() {
+  }
 
 }
+

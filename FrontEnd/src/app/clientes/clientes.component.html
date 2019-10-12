@@ -1,0 +1,31 @@
+<mat-card>
+
+	<ng-template tdLoading="clientes.list">
+		<mat-list class="will-load">
+			<div class="pad" *ngIf="clientes?.length === 0" layout="row" layout-align="center">
+				<h3> No hay clientes para mostrar </h3>
+			</div>
+
+			<ng-template let-art let-last="last" ngFor [ngForOf]="clientes">
+				<mat-list-item>
+					<mat-icon matListAvatar>person</mat-icon>
+					<h3 matLine> ID: {{art.id}}</h3>
+					<h3 matLine> {{art.descripcion}}</h3>
+				<!-- TIENE QUE VER CON RELACIÓN DEPÓSITO-ARTÍCULO	<h3 matLine> Depo.: {{art.cliente}}</h3>-->
+					<button mat-icon-button (click)="delete(art)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-list-item>
+
+				<mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+			</ng-template>
+		</mat-list>
+	</ng-template>
+</mat-card>
+
+
+<a mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" [routerLink]="['add']">
+	<mat-icon>add</mat-icon>
+</a>
+
+

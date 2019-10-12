@@ -9,7 +9,7 @@ class Administrador (models.Model):
     Segundo_Apellido = models.CharField(max_length=35)
     Nombres = models.CharField(max_length=35)
     Celular = models.CharField(max_length=35)
-    Mail = forms.EmailField(help_text='Ingese un email válido, por favor.')
+    Mail = models.CharField(max_length=35)
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
     Sexo = models.CharField(max_length=1, choices=Sexos, default='M')
 
@@ -28,7 +28,7 @@ class Cliente(models.Model):
     Nombres = models.CharField(max_length=35)
     Id_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)
     Celular = models.CharField(max_length=35)
-    Mail = forms.EmailField(help_text='Ingrese un email válido, por favor')
+    Mail = models.CharField(max_length=35)
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
     Sexo = models.CharField(max_length=1, choices=Sexos, default='M')
 
@@ -47,7 +47,7 @@ class Trabajador (models.Model):
     Nombres = models.CharField(max_length=35)
     Id_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)
     Celular = models.CharField(max_length=35)
-    Mail = forms.EmailField(help_text='Ingese un email válido, por favor.')
+    Mail = models.CharField(max_length=35)
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
     Sexo = models.CharField(max_length=1, choices=Sexos, default='M')
 
