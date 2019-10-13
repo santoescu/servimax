@@ -21,6 +21,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 
+import { FormsModule } from '@angular/forms';
 
 //Componentes
 import { MenuComponent } from './menu/menu.component';
@@ -36,6 +37,13 @@ import {APP_ROUTING} from './app.routes';
 //servicio
 import {InventarioService} from './app.service';
 import { LoginComponent } from './login/login.component';
+import { RegistrarComponent } from './usuarios/registrar/registrar.component';
+import { ListaComponent } from './usuarios/lista/lista.component';
+
+//guards
+import { LoginGuard } from './login.guard';
+import { NoLoginGuard } from './no-login.guard';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +54,8 @@ import { LoginComponent } from './login/login.component';
     InventarioComponent,
     LoginComponent,
     ClientesComponent,
+    RegistrarComponent,
+    ListaComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,10 +79,11 @@ import { LoginComponent } from './login/login.component';
     CovalentDynamicFormsModule,
     SharedModule,
 
-    APP_ROUTING
-  ],
+    APP_ROUTING,
+    FormsModule
+ ],
   providers: [
-    InventarioService
+    InventarioService, LoginGuard, NoLoginGuard
   ],
   bootstrap: [AppComponent]
 })
