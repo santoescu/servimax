@@ -20,10 +20,22 @@ export class NavigationComponent {
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
 
   }
+  isMenuOpen=true;
+  contentMargin = 240;
 
   logout(){
     localStorage.removeItem('email');
     this.router.navigate(['/login']);
+  }
+
+  onToolbarMenuToggle(){
+    console.log('On toolbar toggled',this.isMenuOpen);
+    this.isMenuOpen=!this.isMenuOpen;
+    if(!this.isMenuOpen) {
+      this.contentMargin = 5;
+    } else {
+      this.contentMargin = 240;
+    }
   }
 
 }
