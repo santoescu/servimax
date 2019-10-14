@@ -42,6 +42,8 @@ import { NoLoginGuard } from './no-login.guard';
 import { ClientesComponent } from './clientes/clientes.component';
 
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     SharedModule,
     NoopAnimationsModule,
     MatBadgeModule,
+    MatDividerModule,
+    MatTooltipModule,
 
     FormsModule
   ],

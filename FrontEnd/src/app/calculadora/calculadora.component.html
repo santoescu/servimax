@@ -1,1 +1,43 @@
-<p>Calculadora</p>
+<br>
+<div class="container">
+	<div class="card">
+		<div class="card-header text-center text-uppercase">Calculadora</div>
+			<div class="card-body">
+				<div class="form-gruop d-flex flex-row justify-content-between" >
+					<p>
+  						<mat-form-field id="campo1"appearance="outline">
+    						<mat-label>Kilataje</mat-label>
+    						<input matInput [(ngModel)]='kilataje' placeholder="Solo numeros" type="number" >
+    						
+    						<mat-hint></mat-hint>
+  						</mat-form-field>
+					</p>
+					<p>
+  						<mat-form-field id="campo1"appearance="outline">
+    						<mat-label>Peso</mat-label>
+    						<input matInput [(ngModel)]='peso' placeholder="Solo numeros" type="number">
+    						<mat-hint></mat-hint>
+  						</mat-form-field>
+					</p>
+				</div>
+				<div class="d-flex flex-row justify-content-between">
+					<button matTooltip="El precio del oro esta a ${{kilataje}}"
+        					aria-label="Button that displays a tooltip when focused or hovered over"
+        					class="btn btn-primary">Precio oro</button>
+					<button matTooltip="El precio de la plata esta a ${{kilataje}}"
+        					aria-label="Button that displays a tooltip when focused or hovered over"
+        					class="btn btn-primary">Precio plata</button>
+					<button matTooltip="Calcular"
+        					aria-label="Button that displays a tooltip when focused or hovered over"
+        					class="btn btn-success">Calcular</button>
+					<button (clickmatTooltip="¿Deseas limpiar los valores del tablero?"
+        					aria-label="Button that displays a tooltip when focused or hovered over"
+        					class="btn btn-danger">Limpiar</button>
+					
+				</div>
+			</div>
+			<div class="card-footer">
+				<p>El precio real de su joya es: ${{peso}}</p>
+			</div>
+	</div>
+</div>
