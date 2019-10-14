@@ -10,6 +10,7 @@ class Administrador (models.Model):
     Nombres = models.CharField(max_length=35)
     Celular = models.CharField(max_length=35)
     Mail = models.CharField(max_length=35)
+    Clave = models.CharField(max_length=35, null = False, blank = False, default = '00000')
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
     Sexo = models.CharField(max_length=1, choices=Sexos, default='M')
 
@@ -29,6 +30,7 @@ class Cliente(models.Model):
     Id_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)
     Celular = models.CharField(max_length=35)
     Mail = models.CharField(max_length=35)
+    Clave = models.CharField(max_length=35, null = False, blank = False, default = '00000')
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
     Sexo = models.CharField(max_length=1, choices=Sexos, default='M')
 
@@ -48,6 +50,7 @@ class Trabajador (models.Model):
     Id_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)
     Celular = models.CharField(max_length=35)
     Mail = models.CharField(max_length=35)
+    Clave = models.CharField(max_length=35, null = False, blank = False, default = '00000')
     Sexos = (('F', 'Femenino'), ('M', 'Masculino'))
     Sexo = models.CharField(max_length=1, choices=Sexos, default='M')
 

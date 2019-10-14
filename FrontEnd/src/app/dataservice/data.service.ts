@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import { Cliente } from './cliente';
+import { Trabajador } from './trabajador';
+import { Administrador } from './administrador';
+
 
 @Injectable()
 export class DataService{
@@ -14,6 +17,18 @@ export class DataService{
 			return this.http.get('http://localhost:8000/Cliente?format=json', {headers: this.headers})
 				.toPromise()
 				.then(response => response.json() as Cliente[])
+		}
+
+		getTrabajadores(): Promise<Trabajador[]> {
+			return this.http.get('http://localhost:8000/Trabajador', {headers: this.headers})
+				.toPromise()
+				.then(response => response.json() as Trabajador[])
+		}
+
+		getAdministrador(): Promise<Administrador[]> {
+			return this.http.get('http://localhost:8000/Administrador', {headers: this.headers})
+				.toPromise()
+				.then(response => response.json() as Administrador[])
 		}
 
 		deleteClientes(id: number): Promise<void> {

@@ -1,6 +1,6 @@
-export class Cliente{
+export class Trabajador{
 	id: number;
-	Id_Cliente : number;
+	Id_Trabajador : number;
     Primer_Apellido : string;
     Segundo_Apellido : string;
     Nombres : string;

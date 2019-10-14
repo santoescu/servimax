@@ -14,15 +14,14 @@ import {ClientesComponent} from './clientes/clientes.component';
 
 const ROUTES: Routes = [
 
+    { path: '', component: LoginComponent, canActivate: [NoLoginGuard]},
     { path: 'login', component: LoginComponent, canActivate: [NoLoginGuard]},
-    { path: 'home', component: NavigationComponent},
     { path: 'transacciones', component: MenuComponent, canActivate: [LoginGuard]},
     { path: 'herramientas', component: CalculadoraComponent, canActivate: [LoginGuard]},
     { path: 'inventario', component: InventarioComponent, canActivate: [LoginGuard]},
     { path: 'usuarios', component: ListaComponent, canActivate: [LoginGuard]},
 	{ path: 'registrar', component: RegistrarComponent, canActivate: [LoginGuard]},
 	{ path: 'clientes', component: ClientesComponent, canActivate: [LoginGuard]},
-
     { path: '**', pathMatch: 'full', redirectTo: 'login'},
 
 ];
