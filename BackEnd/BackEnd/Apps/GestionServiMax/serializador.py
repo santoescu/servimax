@@ -4,17 +4,17 @@ from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajad
 class AdministradorSerializador(serializers.ModelSerializer):
 	class Meta:
 		model = Administrador
-		fields = ('id', 'Id_Admin', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Celular', 'Mail', 'Sexo')
+		fields = ('id', 'Id_Admin', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Celular', 'Mail', 'Clave', 'Sexo')
 
 class ClienteSerializador(serializers.ModelSerializer):
 	class Meta:
 		model = Cliente
-		fields = ('id', 'Id_Cliente', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Id_Admin', 'Celular', 'Mail', 'Sexo')
+		fields = ('id', 'Id_Cliente', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Id_Admin', 'Celular', 'Mail', 'Clave', 'Sexo')
 
 class TrabajadorSerializador(serializers.ModelSerializer):
 	class Meta:
 		model = Trabajador
-		fields = ('id', 'Id_Trabajador', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Id_Admin', 'Celular', 'Mail', 'Sexo')
+		fields = ('id', 'Id_Trabajador', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Id_Admin', 'Celular', 'Mail', 'Clave', 'Sexo')
 
 
 class TransaccionSerializador(serializers.ModelSerializer) :
