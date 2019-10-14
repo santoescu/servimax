@@ -3,7 +3,7 @@
   
   <h2 class="login-header">Servimax</h2>
 
-  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+  <form class="login-container" #loginForm="ngForm"  (ngSubmit)="login(loginForm)">
     <p><input type="email" name="email" id="email" placeholder="Email" ngModel></p>
     <p><input type="password" name="password" id="password" placeholder="Contraseña" ngModel></p>
     <p><input type="submit" value="Iniciar Sesion" [routerLink]="['transacciones']"></p>
