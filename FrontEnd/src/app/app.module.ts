@@ -44,6 +44,8 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -93,6 +95,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatBadgeModule,
     MatDividerModule,
     MatTooltipModule,
+    MatSelectModule,
+    MatSnackBarModule,
 
     FormsModule
   ],
