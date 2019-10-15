@@ -29,7 +29,7 @@ import { InventarioComponent } from './inventario/inventario.component'
 import {APP_ROUTING} from './app.routes';
 
 //servicio
-import {InventarioService} from './app.service';
+import {InventarioService, UserMaster} from './app.service';
 import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './usuarios/registrar/registrar.component';
 import { ListaComponent } from './usuarios/lista/lista.component';
@@ -101,7 +101,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule
   ],
   providers: [
-    InventarioService, LoginGuard, NoLoginGuard, DataService
+    InventarioService, LoginGuard, NoLoginGuard, DataService, UserMaster
   ],
   bootstrap: [AppComponent]
 })

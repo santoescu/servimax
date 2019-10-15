@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from './../dataservice/data.service';
 import { Trabajador } from './../dataservice/trabajador';
+import { UserMaster} from '../app.service';
 
 @Component({
   selector: 'app-login',
@@ -13,34 +14,32 @@ export class LoginComponent implements OnInit {
 
   trabajadores : Trabajador[];
 
+  message: string;
+  editMessage: string;
+
   getTrabajadores():void{
     this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
   }
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private usuarioM: UserMaster) { }
 
   ngOnInit() {
+    this.usuarioM.customMessage.subscribe(msg => this.message = msg);
   }
 
   login(form: NgForm) {
-    console.log(form.value);
 
     trabajadores : this.getTrabajadores();
 
-    var centinela : false;
-
-
       for (let i = 0; i < this.trabajadores.length; i++) {
-        console.log("asdfas: " + this.trabajadores[i].Clave);
         if(form.value.email === this.trabajadores[i].Mail && form.value.password === this.trabajadores[i].Clave ){
+          this.usuarioM.setUsuario(this.trabajadores[i].Nombres);
           localStorage.setItem('email', form.value.email);
           this.router.navigate(['/transacciones']);
-          centinela : true;
+
+          this.usuarioM.changeMessage(this.trabajadores[i].Nombres);
         }
       }
-
-      if (centinela === false) {
-        console.log("inválido");
-      }
   }
+
 }

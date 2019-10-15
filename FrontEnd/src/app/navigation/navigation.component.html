@@ -30,7 +30,7 @@
             mat-card-avatar 
             class="avatar"></div>
 
-          <mat-card-title>John Doe</mat-card-title>
+          <mat-card-title>{{message}}</mat-card-title>
           <mat-card-subtitle>Internal</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
@@ -88,7 +88,7 @@
             class="menu-item"
               mat-flat-button
               [routerLink]="['login']" 
-              (click)="logout()"
+              (click)="logout()" [(ngModel)]="editMessage" (click)="changeMessage()"
 >
               <mat-icon>exit_to_app</mat-icon>
             Cerrar sesión</button>

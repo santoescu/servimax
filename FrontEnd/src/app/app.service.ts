@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class InventarioService {
@@ -44,6 +45,30 @@ export class InventarioService {
 
     getProductos(){
         return this.producto;
+    }
+}
+
+export class UserMaster {
+
+    private message = new BehaviorSubject<string>('En espera de un nombre');
+    public customMessage = this.message.asObservable();
+
+    usuario : string;
+
+    constructor(){
+        this.usuario="";
+    }
+
+    public changeMessage(msg: string): void {
+        this.message.next(msg);
+    }
+
+    getUsuario(){
+        return this.usuario;
+    }
+
+    setUsuario(newUser:string){
+        this.usuario = newUser;
     }
 }
 
