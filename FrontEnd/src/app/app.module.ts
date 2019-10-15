@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule,NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +19,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { SharedModule } from './shared/shared.module';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 //Componentes
 import { MenuComponent } from './menu/menu.component';
@@ -47,6 +48,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RegistrocvComponent } from './registrocv/registrocv.component';
+import { CompraComponent } from './herramientas/compra/compra.component';
+import { VentaComponent } from './herramientas/venta/venta.component';
+import { EmpenoComponent } from './herramientas/empeno/empeno.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -60,7 +65,10 @@ import { RegistrocvComponent } from './registrocv/registrocv.component';
     RegistrarComponent,
     ListaComponent,
     ClientesComponent,
-    RegistrocvComponent
+    RegistrocvComponent,
+    CompraComponent,
+    VentaComponent,
+    EmpenoComponent
   ],
   imports: [
     BrowserModule,
@@ -93,12 +101,14 @@ import { RegistrocvComponent } from './registrocv/registrocv.component';
     CovalentMarkdownModule,
     CovalentDynamicFormsModule,
     SharedModule,
-    NoopAnimationsModule,
+    //NoopAnimationsModule, no borren esto por si necesita
     MatBadgeModule,
     MatDividerModule,
     MatTooltipModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTabsModule,
+    MatAutocompleteModule,
 
     FormsModule
   ],
