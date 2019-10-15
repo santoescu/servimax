@@ -10,6 +10,7 @@ import {NoLoginGuard} from './no-login.guard';
 import {ListaComponent} from './usuarios/lista/lista.component';
 import {RegistrarComponent} from './usuarios/registrar/registrar.component';
 import {ClientesComponent} from './clientes/clientes.component';
+import {RegistrocvComponent} from './registrocv/registrocv.component';
 
 
 const ROUTES: Routes = [
@@ -21,7 +22,8 @@ const ROUTES: Routes = [
     { path: 'inventario', component: InventarioComponent, canActivate: [LoginGuard]},
     { path: 'usuarios', component: ListaComponent, canActivate: [LoginGuard]},
 	{ path: 'registrar', component: RegistrarComponent, canActivate: [LoginGuard]},
-	{ path: 'clientes', component: ClientesComponent, canActivate: [LoginGuard]},
+    { path: 'clientes', component: ClientesComponent, canActivate: [LoginGuard]},
+    { path: 'registro', component: RegistrocvComponent, canActivate: [LoginGuard]},
     { path: '**', pathMatch: 'full', redirectTo: 'login'},
 
 ];
