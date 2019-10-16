@@ -2,10 +2,22 @@
   <mat-tab label="Compra">
     <div class="contenedor-formulario">
       <div class="wrap">
-        
-          <mat-form-field id="campo1" appearance="outline">
+
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Datos personales
+      </mat-panel-title>
+      <mat-panel-description>
+        Nombre del vendedor
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field id="campo1" appearance="outline">
             <mat-label>Nombre del Cliente</mat-label>
-           <input type="text" placeholder="Solo letras" required matInput [formControl]="myControl" [matAutocomplete]="auto">
+           <input  (click)="llenarOptions()" type="text" placeholder="Solo letras" required matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
@@ -13,6 +25,62 @@
             </mat-autocomplete>
             <mat-error *ngIf="myControl.hasError('required')">Este campo es requerido</mat-error>
           </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Fecha de la transaccion
+      </mat-panel-title>
+      <mat-panel-description>
+        Escriba la fecha exacta de la transaccion
+        <mat-icon>map</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+  
+    <mat-form-field id="campo1" appearance="outline">
+      <mat-label>Fecha</mat-label>
+  <input matInput [matDatepicker]="picker" placeholder="dd/mm/aaaa" >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+</mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Day of the trip
+      </mat-panel-title>
+      <mat-panel-description>
+        Inform the date you wish to travel
+        <mat-icon>date_range</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Finalizar</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+
+
+        
+          
         
       </div>
     </div>

@@ -27,8 +27,8 @@ export class MenuComponent implements OnInit {
 }
 
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  cedulas:number[];
+  options: string[] = [];
+  cedulas:number[]=[];
   filteredOptions: Observable<string[]>;
 
 ngOnInit() {
@@ -51,16 +51,29 @@ ngOnInit() {
 
 
   llenarOptions(){
+    this.options= [];
+    this.cedulas=[];
+
   	for (let i = 0; i < this.clientes.length; i++) {
         this.options.push(this.clientes[i].Nombres+" "+this.clientes[i].Primer_Apellido+" "+this.clientes[i].Segundo_Apellido);
        this.cedulas.push(this.clientes[i].id);
        }
 
-
-     
-
   }
 
+step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 
 
 

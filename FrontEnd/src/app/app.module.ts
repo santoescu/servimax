@@ -20,6 +20,7 @@ import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { SharedModule } from './shared/shared.module';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 //Componentes
 import { MenuComponent } from './menu/menu.component';
@@ -52,6 +53,8 @@ import { CompraComponent } from './herramientas/compra/compra.component';
 import { VentaComponent } from './herramientas/venta/venta.component';
 import { EmpenoComponent } from './herramientas/empeno/empeno.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
 
 
 @NgModule({
@@ -109,6 +112,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSnackBarModule,
     MatTabsModule,
     MatAutocompleteModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     FormsModule
   ],
