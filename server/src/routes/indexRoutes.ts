@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import { Router } from 'express';
 
 class IndexRoutes {
 	public router:Router =Router();
@@ -11,5 +11,5 @@ class IndexRoutes {
 	}
 
 }
-const indexRoutes=new indexRoutes();
+const indexRoutes=new IndexRoutes();
 export default indexRoutes.router;

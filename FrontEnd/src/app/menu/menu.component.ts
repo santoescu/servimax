@@ -14,15 +14,16 @@ import { Cliente } from './../dataservice/cliente';
 export class MenuComponent implements OnInit {
 
 
-	clientes : Cliente[];
+	clientes : Cliente[]=[];
 
 	getClientes():void{
 		this.dataService.getClientes().then(clientes => this.clientes = clientes);
 	}
 
   constructor(private dataService: DataService) { 
-  //this.llenarOptions();
-  console.log(this.clientes);
+  this.getClientes(); 
+  this.llenarOptions();
+  console.log(this.clientes.length+" hola");
 }
 
   myControl = new FormControl();
@@ -32,7 +33,7 @@ export class MenuComponent implements OnInit {
 
 ngOnInit() {
 	this.getClientes();
-	//this.llenarOptions();
+	this.llenarOptions();
 	console.log(this.clientes);
   	this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -55,7 +56,13 @@ ngOnInit() {
        this.cedulas.push(this.clientes[i].id);
        }
 
+
+     
+
   }
+
+
+
 
 
 
