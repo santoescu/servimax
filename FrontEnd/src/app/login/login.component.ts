@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         if(form.value.email === this.trabajadores[i].Mail && form.value.password === this.trabajadores[i].Clave ){
           this.usuarioM.setUsuario(this.trabajadores[i].Nombres);
           localStorage.setItem('email', form.value.email);
-          this.router.navigate(['/transacciones']);
+          this.router.navigate(['/menu']);
 
           this.usuarioM.changeMessage(this.trabajadores[i].Nombres);
         }

@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import { Cliente } from './cliente';
 import { Trabajador } from './trabajador';
 import { Administrador } from './administrador';
+import { Transaccion } from './transaccion';
 
 
 @Injectable()
@@ -30,6 +31,13 @@ export class DataService{
 				.toPromise()
 				.then(response => response.json() as Administrador[])
 		}
+
+		getTransacciones(): Promise<Transaccion[]> {
+			return this.http.get('http://localhost:8000/Transaccion?json', {headers: this.headers})
+				.toPromise()
+				.then(response => response.json() as Transaccion[])
+		}
+
 
 		deleteClientes(id: number): Promise<void> {
 			const url = `${"http://localhost:8000/deposito"}/${id}`;

@@ -63,6 +63,7 @@
               <mat-icon>assignment</mat-icon>
             Inventario</button>
           </mat-list-item>
+    
           <mat-list-item>
             <button 
             class="menu-item"
@@ -72,6 +73,8 @@
               <mat-icon>assignment_ind</mat-icon>
             Usuarios</button>
           </mat-list-item>
+
+
           <mat-list-item>
             <button 
             class="menu-item"
@@ -81,13 +84,22 @@
               <mat-icon>people</mat-icon>
             Clientes</button>
           </mat-list-item>
-           <mat-divider></mat-divider>
+
           <mat-list-item>
             <button 
             class="menu-item"
               mat-flat-button
-              [routerLink]="['login']" 
-              (click)="logout()" [(ngModel)]="editMessage" (click)="changeMessage()">
+              [routerLink]="['registro']"
+>
+              <mat-icon>people</mat-icon>
+            Registro</button>
+          </mat-list-item>
+
+           <mat-divider></mat-divider>
+
+          <mat-list-item>
+            <button class="menu-item" mat-flat-button [routerLink]="['login']" (click)="logout()" 
+             (click)="changeMessage()">
               <mat-icon>exit_to_app</mat-icon>
             Cerrar sesión</button>
           </mat-list-item>
@@ -97,8 +109,7 @@
 
   <mat-sidenav-content
   [ngStyle]="{ 'margin-left.px': contentMargin }">
-
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

@@ -18,7 +18,7 @@ export class NoLoginGuard implements CanActivate {
       if(localStorage.getItem('email') === null){
         return true;
       } else{
-        this.router.navigate(['/transacciones']);
+        this.router.navigate(['/menu']);
         return false;
       }
 

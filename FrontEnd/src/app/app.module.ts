@@ -47,6 +47,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RegistrocvComponent } from './registrocv/registrocv.component';
 import { CompraComponent } from './herramientas/compra/compra.component';
 import { VentaComponent } from './herramientas/venta/venta.component';
 import { EmpenoComponent } from './herramientas/empeno/empeno.component';
@@ -64,9 +65,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     RegistrarComponent,
     ListaComponent,
     ClientesComponent,
+    RegistrocvComponent,
     CompraComponent,
     VentaComponent,
-    EmpenoComponent,
+    EmpenoComponent
   ],
   imports: [
     BrowserModule,
