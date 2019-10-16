@@ -98,11 +98,8 @@
            <mat-divider></mat-divider>
 
           <mat-list-item>
-            <button 
-            class="menu-item"
-              mat-flat-button
-              [routerLink]="['login']" 
-              (click)="logout()" [(ngModel)]="editMessage" (click)="changeMessage()">
+            <button class="menu-item" mat-flat-button [routerLink]="['login']" (click)="logout()" 
+             (click)="changeMessage()">
               <mat-icon>exit_to_app</mat-icon>
             Cerrar sesión</button>
           </mat-list-item>
@@ -112,8 +109,7 @@
 
   <mat-sidenav-content
   [ngStyle]="{ 'margin-left.px': contentMargin }">
-
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

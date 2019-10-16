@@ -17,13 +17,15 @@ const ROUTES: Routes = [
 
     { path: '', component: LoginComponent, canActivate: [NoLoginGuard]},
     { path: 'login', component: LoginComponent, canActivate: [NoLoginGuard]},
-    { path: 'transacciones', component: MenuComponent, canActivate: [LoginGuard]},
-    { path: 'herramientas', component: CalculadoraComponent, canActivate: [LoginGuard]},
-    { path: 'inventario', component: InventarioComponent, canActivate: [LoginGuard]},
-    { path: 'usuarios', component: ListaComponent, canActivate: [LoginGuard]},
-	{ path: 'registrar', component: RegistrarComponent, canActivate: [LoginGuard]},
-    { path: 'clientes', component: ClientesComponent, canActivate: [LoginGuard]},
-    { path: 'registro', component: RegistrocvComponent, canActivate: [LoginGuard]},
+    { path: 'menu', component: NavigationComponent, canActivate: [LoginGuard], children:[
+        { path: 'transacciones', component: MenuComponent, canActivate: [LoginGuard]},
+        { path: 'herramientas', component: CalculadoraComponent, canActivate: [LoginGuard]},
+        { path: 'inventario', component: InventarioComponent, canActivate: [LoginGuard]},
+        { path: 'usuarios', component: ListaComponent, canActivate: [LoginGuard]},
+        { path: 'registrar', component: RegistrarComponent, canActivate: [LoginGuard]},
+        { path: 'clientes', component: ClientesComponent, canActivate: [LoginGuard]},
+        { path: 'registro', component: RegistrocvComponent, canActivate: [LoginGuard]},
+    ]},
     { path: '**', pathMatch: 'full', redirectTo: 'login'},
 
 ];
