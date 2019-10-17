@@ -9,7 +9,7 @@ class AdministradorSerializador(serializers.ModelSerializer):
 class ClienteSerializador(serializers.ModelSerializer):
 	class Meta:
 		model = Cliente
-		fields = ('id', 'Id_Cliente', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Id_Admin', 'Celular', 'Mail', 'Clave', 'Sexo')
+		fields = ('id', 'Id_Cliente', 'Primer_Apellido', 'Segundo_Apellido', 'Nombres', 'Id_Admin', 'Celular', 'Mail', 'Sexo')
 
 class TrabajadorSerializador(serializers.ModelSerializer):
 	class Meta:

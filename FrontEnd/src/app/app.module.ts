@@ -26,6 +26,7 @@ import { MenuComponent } from './menu/menu.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { InventarioComponent } from './inventario/inventario.component'
 
+
 //Rutas
 import {APP_ROUTING} from './app.routes';
 
@@ -42,6 +43,7 @@ import { LoginGuard } from './login.guard';
 import { NoLoginGuard } from './no-login.guard';
 import { ClientesComponent } from './clientes/clientes.component';
 
+
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -52,6 +54,10 @@ import { CompraComponent } from './herramientas/compra/compra.component';
 import { VentaComponent } from './herramientas/venta/venta.component';
 import { EmpenoComponent } from './herramientas/empeno/empeno.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
+import { MailComponent } from './mail/mail.component';
+import { AddClienteComponent } from './clientes/add-cliente/add-cliente.component';
+import { TimerComponent } from './timer/timer.component';
 
 
 @NgModule({
@@ -68,7 +74,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     RegistrocvComponent,
     CompraComponent,
     VentaComponent,
-    EmpenoComponent
+    EmpenoComponent,
+    MailComponent,
+    AddClienteComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -109,6 +118,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSnackBarModule,
     MatTabsModule,
     MatAutocompleteModule,
+
+    BrowserModule,
+    HttpClientModule,
 
     FormsModule
   ],

@@ -15,6 +15,10 @@ export class ClientesComponent implements OnInit {
 		this.dataService.getClientes().then(clientes => this.clientes = clientes);
 	}
 
+  delete(cli):void{
+    this.dataService.deleteClientes(cli.id);
+    this.clientes = this.clientes.filter(a => a !== cli);
+  }
   constructor(private dataService: DataService) { }
 
   ngOnInit() {

@@ -1,0 +1,185 @@
+<mat-card>
+
+	<mat-card-title>
+		Nuevo Cliente
+	</mat-card-title>
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		<form #clienteForm="ngForm">
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Id_Cliente"
+					#elementIdentificacionControl = "ngModel"
+					type="text"
+					name="Id_Cliente"
+					placeholder="Identificación"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementIdentificacionControl.pristine || 
+						!elementIdentificacionControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Primer_Apellido"
+					#elementPrimerApellidoControl = "ngModel"
+					type="text"
+					name="Primer_Apellido"
+					placeholder="Primer Apellido"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementPrimerApellidoControl.pristine || 
+						!elementPrimerApellidoControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Segundo_Apellido"
+					#elementSegundoApellidoControl = "ngModel"
+					type="text"
+					name="Segundo_Apellido"
+					placeholder="Segundo Apellido"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementSegundoApellidoControl.pristine || 
+						!elementSegundoApellidoControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Nombres"
+					#elementNombresControl = "ngModel"
+					type="text"
+					name="Nombres"
+					placeholder="Nombres"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementNombresControl.pristine || 
+						!elementNombresControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput type="number"
+					[(ngModel)]="cliente.Id_Admin"
+					#elementIdAdminControl = "ngModel"
+					type="text"
+					name="Id_Admin"
+					placeholder="Administrador"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementIdAdminControl.pristine || 
+						!elementIdAdminControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Celular"
+					#elementCelularControl = "ngModel"
+					type="text"
+					name="Celular"
+					placeholder="Celular"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementCelularControl.pristine || 
+						!elementCelularControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Mail"
+					#elementMailControl = "ngModel"
+					type="text"
+					name="Mail"
+					placeholder="Mail"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementMailControl.pristine || 
+						!elementMailControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="cliente.Sexo"
+					#elementSexoControl = "ngModel"
+					type="text"
+					name="Sexo"
+					placeholder="Sexo"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementSexoControl.pristine || 
+						!elementSexoControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+		</form>
+	</mat-card-content>
+	<mat-divider></mat-divider>
+
+		<mat-divider></mat-divider>
+
+	<mat-card-actions>
+		<button mat-button [disabled]="!clienteForm.valid" color="primary" (click)="save()">
+		Guardar </button>
+		<button mat-button (click)="redirect()"> 
+		Volver </button>
+	</mat-card-actions>
+</mat-card>
+
