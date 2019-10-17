@@ -9,7 +9,7 @@ import { Cliente } from './../dataservice/cliente';
 })
 export class ClientesComponent implements OnInit {
 
-	clientes : Cliente[];
+	clientes : Cliente[]=[];
 
 	getClientes():void{
 		this.dataService.getClientes().then(clientes => this.clientes = clientes);

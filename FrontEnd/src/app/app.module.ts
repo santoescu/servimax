@@ -20,6 +20,7 @@ import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { SharedModule } from './shared/shared.module';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 //Componentes
 import { MenuComponent } from './menu/menu.component';
@@ -57,7 +58,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MailComponent } from './mail/mail.component';
 import { AddClienteComponent } from './clientes/add-cliente/add-cliente.component';
-import { TimerComponent } from './timer/timer.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
 
 
 @NgModule({
@@ -77,7 +79,6 @@ import { TimerComponent } from './timer/timer.component';
     EmpenoComponent,
     MailComponent,
     AddClienteComponent,
-    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +119,9 @@ import { TimerComponent } from './timer/timer.component';
     MatSnackBarModule,
     MatTabsModule,
     MatAutocompleteModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     BrowserModule,
     HttpClientModule,
