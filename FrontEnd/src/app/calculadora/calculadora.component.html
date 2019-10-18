@@ -28,12 +28,12 @@
 				<div class="d-flex flex-row justify-content-between">
 					<mat-radio-group [(ngModel)]='valor'>
   						<mat-radio-button value="1"
-  									  matTooltip="El precio del oro esta a ${{kilataje}}"
+  									  matTooltip="El precio del oro esta a ${{precioOro}}"
   									  >Precio oro</mat-radio-button>
   					</mat-radio-group>
   					<mat-radio-group [(ngModel)]='valor'>
   						<mat-radio-button value="2"
-  									  matTooltip="El precio de la plata esta a ${{kilataje}}"
+  									  matTooltip="El precio de la plata esta a ${{precioPlata}}"
   									  >Precio plata</mat-radio-button>
   					</mat-radio-group>
 
@@ -41,7 +41,7 @@
 					<button (click)="calcular()"
 							matTooltip="Calcular" 
         					aria-label="Button that displays a tooltip when focused or hovered over"
-        					class="btn btn-success">Calcular</button>
+        					class="btn btn-primary">Calcular</button>
 					<button (click)="limpiar()" 
 							matTooltip="¿Deseas limpiar los valores del tablero?"
         					aria-label="Button that displays a tooltip when focused or hovered over"

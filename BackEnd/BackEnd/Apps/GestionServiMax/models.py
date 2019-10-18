@@ -64,7 +64,7 @@ class Trabajador (models.Model):
 
 class Transaccion(models.Model):
     ID_Transaccion = models.CharField(max_length=10)
-    Fecha = models.DateField()
+    Fecha = models.CharField(max_length=10,null=False,blank=False)
     Tipos = (('C', 'Compra'), ('V', 'Venta'), ('E', 'Empeño'))
     Tipo = models.CharField(max_length=1, choices=Tipos, default='M')
     ID_Cliente = models.ForeignKey(Cliente, null = False, blank= False, on_delete=models.CASCADE)
@@ -83,15 +83,15 @@ class Producto(models.Model):
     Id_Producto = models.CharField(max_length = 12)
     ID_Transaccion = models.ForeignKey(Transaccion, null = False, blank= False, on_delete=models.CASCADE)
     Nombre = models.CharField(max_length = 20)
-    Descripcion = models.TextField(blank = False, null = False)
-    Precio_De_Compra = models.PositiveSmallIntegerField()
-    Precio_De_Venta = models.PositiveSmallIntegerField()
+    Descripcion = models.TextField(blank = True, null = True)
+    Precio_De_Compra = models.PositiveSmallIntegerField(blank = True, null = True)
+    Precio_De_Venta = models.PositiveSmallIntegerField(blank = True, null = True)
 
     Tipos = (('J', 'Joya'), ('P', 'Producto'))
     Tipo = models.CharField(max_length=1, choices=Tipos, default='M')
 
-    Kilates = models.DecimalField(decimal_places = 2, max_digits = 3)
-    Kilogramos = models.DecimalField(decimal_places = 2, max_digits = 3)
+    Kilates = models.DecimalField(decimal_places = 2, max_digits = 3,blank = True, null = True)
+    Kilogramos = models.DecimalField(decimal_places = 2, max_digits = 3,blank = True, null = True)
 
     def obtenerDatosProducto(self):
        cadena = "{0} {1}, {2}"

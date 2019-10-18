@@ -12,7 +12,7 @@ import { UserMaster} from '../app.service';
 })
 export class LoginComponent implements OnInit {
 
-  trabajadores : Trabajador[];
+  trabajadores : Trabajador[]=[];
 
   message: string;
   editMessage: string;
