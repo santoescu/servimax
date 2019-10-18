@@ -18,10 +18,20 @@ from django.urls import path, include
 
 from BackEnd.Apps.Paginas import views
 
+from BackEnd.Apps.send import SendViews
+
+
+
+
 urlpatterns = [
     path('', views.home_view),
 
+    path('', SendViews.send_view),
+
     path('', include('BackEnd.Apps.GestionServiMax.urls')),
+
+    path('', include('BackEnd.Apps.send.urls')),
+
 
     path('admin/', admin.site.urls),
 

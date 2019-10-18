@@ -27,7 +27,6 @@ export class RegistrocvComponent implements OnInit {
   ngOnInit() {
     this.getClientes();
     this.getTransacciones();
-    console.log(this.clientes);
-    console.log(this.transaccion);
+
   }
 }

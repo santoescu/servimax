@@ -1,0 +1,205 @@
+<mat-card>
+
+	<mat-card-title>
+		Nuevo Trabajador
+	</mat-card-title>
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		<form #trabajadorForm="ngForm">
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Id_Trabajador"
+					#elementIdentificacionControl = "ngModel"
+					type="text"
+					name="Id_Trabajador"
+					placeholder="Identificación"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementIdentificacionControl.pristine || 
+						!elementIdentificacionControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Primer_Apellido"
+					#elementPrimerApellidoControl = "ngModel"
+					type="text"
+					name="Primer_Apellido"
+					placeholder="Primer Apellido"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementPrimerApellidoControl.pristine || 
+						!elementPrimerApellidoControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Segundo_Apellido"
+					#elementSegundoApellidoControl = "ngModel"
+					type="text"
+					name="Segundo_Apellido"
+					placeholder="Segundo Apellido"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementSegundoApellidoControl.pristine || 
+						!elementSegundoApellidoControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Nombres"
+					#elementNombresControl = "ngModel"
+					type="text"
+					name="Nombres"
+					placeholder="Nombres"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementNombresControl.pristine || 
+						!elementNombresControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput type="number"
+					[(ngModel)]="trabajador.Id_Admin"
+					#elementIdAdminControl = "ngModel"
+					type="text"
+					name="Id_Admin"
+					placeholder="Administrador"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementIdAdminControl.pristine || 
+						!elementIdAdminControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Celular"
+					#elementCelularControl = "ngModel"
+					type="text"
+					name="Celular"
+					placeholder="Celular"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementCelularControl.pristine || 
+						!elementCelularControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Mail"
+					#elementMailControl = "ngModel"
+					type="text"
+					name="Mail"
+					placeholder="Mail"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementMailControl.pristine || 
+						!elementMailControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+            </div>
+            
+            <div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Clave"
+					#elementClaveControl = "ngModel"
+					type="text"
+					name="Clave"
+					placeholder="Clave"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementClaveControl.pristine || 
+						!elementClaveControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div layout = row>
+
+				<mat-form-field flex>
+					<input matInput
+					[(ngModel)]="trabajador.Sexo"
+					#elementSexoControl = "ngModel"
+					type="text"
+					name="Sexo"
+					placeholder="Sexo"
+					maxlength="30"
+					required=""
+					>
+					<mat-hint alig="start">
+						<span [hidden] = "elementSexoControl.pristine || 
+						!elementSexoControl.errors?.required" class = "tc-red-600"> Requerido
+						</span>
+					</mat-hint>
+				</mat-form-field>
+			</div>
+		</form>
+	</mat-card-content>
+	<mat-divider></mat-divider>
+
+		<mat-divider></mat-divider>
+
+	<mat-card-actions>
+		<button mat-button [disabled]="!trabajadorForm.valid" color="primary" (click)="save()">
+		Guardar </button>
+		<button mat-button (click)="redirect()"> 
+		Volver </button>
+	</mat-card-actions>
+</mat-card>
+

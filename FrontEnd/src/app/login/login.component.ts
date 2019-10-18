@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   message: string;
   editMessage: string;
 
+  fechaInicial: Date;
+
   getTrabajadores():void{
     this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
   }
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private dataService: DataService, private usuarioM: UserMaster) { }
 
   ngOnInit() {
+    this.getTrabajadores();
     this.usuarioM.customMessage.subscribe(msg => this.message = msg);
   }
 

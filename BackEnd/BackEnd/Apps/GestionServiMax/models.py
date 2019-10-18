@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+import datetime
 
 # Create your models here.
 
@@ -98,3 +99,19 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.obtenerDatosProducto()
+
+class TiempoLaborado(models.Model):
+    fecha = models.CharField(max_length = 20)
+
+    Id_Trabajador = models.ForeignKey(Trabajador, null = False, blank = False, on_delete = models.CASCADE)
+
+    horas = models.CharField(max_length=2)
+    minutos = models.CharField(max_length=2)
+    segundos = models.CharField(max_length=4)
+
+    def obtenerDatosTiempo(self):
+        cadena = "{0} {1}, {2}"
+        return cadena.format(self.fecha, self.horas, self.minutos)
+
+    def __str__(self):
+        return self.obtenerDatosTiempo()

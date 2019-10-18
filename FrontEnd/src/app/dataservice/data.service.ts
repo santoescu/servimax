@@ -5,6 +5,7 @@ import { Cliente } from './cliente';
 import { Trabajador } from './trabajador';
 import { Administrador } from './administrador';
 import { Transaccion } from './transaccion';
+import { TiempoLaborado } from './tiempo-laborado';
 
 
 @Injectable()
@@ -21,7 +22,7 @@ export class DataService{
 		}
 
 		getTrabajadores(): Promise<Trabajador[]> {
-			return this.http.get('http://localhost:8000/Trabajador', {headers: this.headers})
+			return this.http.get('http://localhost:8000/Trabajador?format=json', {headers: this.headers})
 				.toPromise()
 				.then(response => response.json() as Trabajador[])
 		}
@@ -45,6 +46,12 @@ export class DataService{
 				.toPromise()
 				.then(() => null)
 		}
+		deleteTrabajadores(id: number): Promise<void> {
+			const url = `${"http://localhost:8000/Trabajador"}/${id}`;
+			return this.http.delete(url, {headers: this.headers})
+				.toPromise()
+				.then(() => null)
+		}
 
 		createClientes(d: Cliente): Promise<Cliente> {
 			return this.http
@@ -52,6 +59,32 @@ export class DataService{
 			.toPromise()
 			.then(res => res.json() as Cliente)
 		}
+		createTrabajadores(d: Trabajador): Promise<Trabajador> {
+			return this.http
+			.post("http://localhost:8000/Trabajador", JSON.stringify(d), {headers: this.headers})
+			.toPromise()
+			.then(res => res.json() as Trabajador)
+		}
+
+		enviarMail(d: Cliente): Promise<Cliente> {
+			return this.http
+			.post("http://localhost:8000/Send", JSON.stringify(d), {headers: this.headers})
+			.toPromise()
+			.then(res => res.json() as Cliente)
+		}
+
+
+		crearRegistroTabla(d: TiempoLaborado): Promise<TiempoLaborado> {
+
+			console.log("prueba " + d.segundos);
+			return this.http
+			.post("http://localhost:8000/Tiempo", JSON.stringify(d), {headers: this.headers})
+			.toPromise()
+			.then(res => res.json() as TiempoLaborado)
+		}
+
+
+
 
 }
 	

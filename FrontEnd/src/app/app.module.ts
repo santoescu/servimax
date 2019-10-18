@@ -60,6 +60,10 @@ import { MailComponent } from './mail/mail.component';
 import { AddClienteComponent } from './clientes/add-cliente/add-cliente.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
+import { TrabajadoresComponent } from './trabajadores/trabajadores.component';
+import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabajador.component';
+
+
 
 
 @NgModule({
@@ -79,6 +83,9 @@ import {MatNativeDateModule} from '@angular/material';
     EmpenoComponent,
     MailComponent,
     AddClienteComponent,
+    TrabajadoresComponent,
+    AddTrabajadorComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -123,10 +130,12 @@ import {MatNativeDateModule} from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
 
+    
+
     BrowserModule,
     HttpClientModule,
 
-    FormsModule
+    FormsModule,
   ],
   providers: [
     InventarioService, LoginGuard, NoLoginGuard, DataService, UserMaster

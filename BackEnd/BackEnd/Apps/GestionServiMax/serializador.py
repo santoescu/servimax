@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajador, Transaccion, Producto
+from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajador, Transaccion, Producto, TiempoLaborado
 
 class AdministradorSerializador(serializers.ModelSerializer):
 	class Meta:
@@ -28,3 +28,7 @@ class ProductoSerializador(serializers.ModelSerializer):
 		model = Producto
 		fields = ('id','Id_Producto', 'ID_Transaccion', 'Nombre', 'Descripcion', 'Precio_De_Compra', 'Precio_De_Venta', 'Tipo', 'Kilates', 'Kilogramos')
 
+class TiempoSerializador(serializers.ModelSerializer):
+	class Meta:
+		model = TiempoLaborado
+		fields = ('fecha', 'Id_Trabajador', 'horas', 'minutos', 'segundos')

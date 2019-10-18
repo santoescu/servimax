@@ -13,6 +13,8 @@ import {ClientesComponent} from './clientes/clientes.component';
 import {RegistrocvComponent} from './registrocv/registrocv.component';
 import { MailComponent } from "./mail/mail.component";
 import {AddClienteComponent} from "./clientes/add-cliente/add-cliente.component";
+import {TrabajadoresComponent} from './trabajadores/trabajadores.component';
+import {AddTrabajadorComponent} from './trabajadores/add-trabajador/add-trabajador.component';
 
 
 const ROUTES: Routes = [
@@ -43,6 +45,20 @@ const ROUTES: Routes = [
         },
         { path: 'registro', component: RegistrocvComponent, canActivate: [LoginGuard]},
         { path: 'mail', component: MailComponent, canActivate: [LoginGuard]},
+        
+        { 
+            path: 'trabajadores',
+            children: [
+                {
+                    path: '',
+                    component: TrabajadoresComponent, canActivate: [LoginGuard],
+                },{
+                    path: 'addTrabajadores',
+                    component: AddTrabajadorComponent, canActivate: [LoginGuard]
+                }
+            ]
+        },
+
 
     ]},
     { path: '**', pathMatch: 'full', redirectTo: 'login'},
