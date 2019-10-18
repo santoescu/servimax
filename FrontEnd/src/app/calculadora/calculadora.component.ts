@@ -15,7 +15,7 @@ export class CalculadoraComponent{
 
 	constructor(private _snackBar: MatSnackBar){
 
-	}
+	} 
 
 
  public kilates:number;
