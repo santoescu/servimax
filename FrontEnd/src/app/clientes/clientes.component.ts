@@ -5,12 +5,15 @@ import { Router } from '@angular/router';
 import {MatTableDataSource} from '@angular/material/table';
 
 export interface PeriodicElement {
-  cedula: string;
-  nombre: string;
-  primer: string;
-  segundo: string;
-  correo: string;
-  celular: string;
+    Id_Cliente : string;
+    Primer_Apellido : string;
+    Segundo_Apellido : string;
+    Nombres : string;
+    Id_Admin : number;
+    Celular : string;
+    Mail : string;
+    Sexos : string;
+    Sexo : string;
 }
 
 var ELEMENT_DATA: PeriodicElement[] = [];
@@ -41,9 +44,12 @@ export class ClientesComponent implements OnInit {
 		await this.dataService.getClientes().then(clientes => this.clientes = clientes);
 	}
 
-  delete(cli):void{
-    this.dataService.deleteClientes(cli.id);
-    this.clientes = this.clientes.filter(a => a !== cli);
+   delete(cli){
+    
+  this.dataService.deleteClientes(cli.cedula);
+    
+     this.clientes = this.clientes.filter(a => a !== cli);
+     this.redirect();
   }
 
   enviar(cli): void {
@@ -67,16 +73,14 @@ export class ClientesComponent implements OnInit {
      await this.getClientes();
      this.llenarDatos();
      this.dataSource=new MatTableDataSource(ELEMENT_DATA);
-     console.log(this.clientes.length+"jaja");
 
 }
 
   llenarDatos(){ 
-    console.log(this.clientes.length);
+    
     ELEMENT_DATA=[];
    for (let i = 0; i < this.clientes.length; i++) {
-     console.log(this.clientes.length);
-        ELEMENT_DATA.push({cedula: this.clientes[i].Id_Cliente, nombre: this.clientes[i].Nombres, primer: this.clientes[i].Primer_Apellido, segundo: this.clientes[i].Segundo_Apellido,correo: this.clientes[i].Mail,celular: this.clientes[i].Celular});
+        ELEMENT_DATA.push({Id_Cliente: this.clientes[i].Id_Cliente, Nombres: this.clientes[i].Nombres, Primer_Apellido: this.clientes[i].Primer_Apellido, Segundo_Apellido: this.clientes[i].Segundo_Apellido,Mail: this.clientes[i].Mail,celular: this.clientes[i].Celular});
     }
   }
    
