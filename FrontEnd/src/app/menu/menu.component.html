@@ -1,104 +1,107 @@
-<mat-tab-group >
+<mat-tab-group>
   <mat-tab label="Compra">
     <div class="contenedor-formulario">
       <div class="wrap">
 
-<mat-accordion class="example-headers-align">
-  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Datos personales
-      </mat-panel-title>
-      <mat-panel-description>
-        Descripcion del cliente
-        <mat-icon>account_circle</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Datos personales
+              </mat-panel-title>
+              <mat-panel-description>
+                Descripcion del cliente
+                <mat-icon>account_circle</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
 
-    <mat-form-field id="campo1" appearance="outline" (click)="llenarOptions()">
-            <mat-label>Nombre del Cliente</mat-label>
-           <input   type="text" placeholder="Solo letras" required matInput [formControl]="myControl" [matAutocomplete]="auto" >
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="idCedula(option)">
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
-            <mat-error *ngIf="myControl.hasError('required')">Este campo es requerido</mat-error>
-          </mat-form-field>
+            <mat-form-field id="campo1" appearance="outline" (click)="llenarOptions()">
+              <mat-label>Nombre del Cliente</mat-label>
+              <input type="text" placeholder="Solo letras" required matInput [formControl]="myControl"
+                [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="idCedula(option)">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="myControl.hasError('required')">Este campo es requerido</mat-error>
+            </mat-form-field>
 
-    <mat-action-row>
-      <button mat-button color="primary" (click)="nextStep()">siguiente</button>
-    </mat-action-row>
-  </mat-expansion-panel>
+            <mat-action-row>
+              <button mat-button color="primary" (click)="nextStep()">siguiente</button>
+            </mat-action-row>
+          </mat-expansion-panel>
 
-  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Transaccion
-      </mat-panel-title>
-      <mat-panel-description>
-        Detalles de la transaccion
-        <mat-icon>date_range</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Transaccion
+              </mat-panel-title>
+              <mat-panel-description>
+                Detalles de la transaccion
+                <mat-icon>date_range</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
 
-<mat-form-field id="campo1" appearance="outline">
-  <mat-label>Seleccione el empleado</mat-label>
-  <mat-select [formControl]="trabajadorControl" required [(ngModel)]='idTrabajador'>
-    <mat-option>--</mat-option>
-    <mat-option *ngFor="let optiontra of trabajadores" [value]="optiontra.Id_Trabajador">
-      {{optiontra.Nombres}} {{optiontra.Primer_Apellido}} {{optiontra.Segundo_Apellido}} 
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="trabajadorControl.hasError('required')">Este campo es requerido</mat-error>
-  <mat-hint></mat-hint>
-</mat-form-field>
-
-  
-    <mat-form-field id="campo1" appearance="outline" >
-      <mat-label>Fecha</mat-label>
-  <input matInput [matDatepicker]="picker" placeholder="dd/mm/aaaa" [(ngModel)]='fecha'>
-  <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-  <mat-datepicker touchUi #picker ></mat-datepicker>
-</mat-form-field>
-
-    <mat-action-row>
-      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-      <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()">Siguiente</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)"(opened)="obtenerFecha()" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>Producto</mat-panel-title>
-      <mat-panel-description>
-        Informacion del producto
-        <mat-icon>add_shopping_cart</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-            <mat-form-field id="campo1"appearance="outline">
-                <mat-label>Nombre del producto</mat-label>
-                <input matInput  placeholder="Solo letras" [formControl]="productoControl" required [(ngModel)]='nombreProducto'>
-                  <mat-error *ngIf="productoControl.hasError('required')">Este campo es requerido</mat-error>
-                <mat-hint></mat-hint>
-              </mat-form-field>
-
-              
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Descripcion del producto</mat-label>
-                  <textarea matInput  [(ngModel)]='descripcion' placeholder="Describa brevemente su producto" ></textarea>
-                </mat-form-field>
-
-                <mat-form-field id="campo1"appearance="outline">
-                <mat-label>Precio del producto</mat-label>
-                <input matInput [(ngModel)]='precioProducto' placeholder="Solo numeros" [formControl]="productoPrecioControl" required type="number">
-                  <mat-error *ngIf="productoPrecioControl.hasError('required')">Este campo es requerido</mat-error>
-                <mat-hint></mat-hint>
-              </mat-form-field>
+            <mat-form-field id="campo1" appearance="outline">
+              <mat-label>Seleccione el empleado</mat-label>
+              <mat-select [formControl]="trabajadorControl" required [(ngModel)]='idTrabajador'>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let optiontra of trabajadores" [value]="optiontra.Id_Trabajador">
+                  {{optiontra.Nombres}} {{optiontra.Primer_Apellido}} {{optiontra.Segundo_Apellido}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="trabajadorControl.hasError('required')">Este campo es requerido</mat-error>
+              <mat-hint></mat-hint>
+            </mat-form-field>
 
 
-              <mat-form-field id="campo1"appearance="outline">
+            <mat-form-field id="campo1" appearance="outline">
+              <mat-label>Fecha</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="dd/mm/aaaa" [(ngModel)]='fecha'>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-action-row>
+              <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()">Siguiente</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" (opened)="obtenerFecha()" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Producto</mat-panel-title>
+              <mat-panel-description>
+                Informacion del producto
+                <mat-icon>add_shopping_cart</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field id="campo1" appearance="outline">
+              <mat-label>Nombre del producto</mat-label>
+              <input matInput placeholder="Solo letras" [formControl]="productoControl" required
+                [(ngModel)]='nombreProducto'>
+              <mat-error *ngIf="productoControl.hasError('required')">Este campo es requerido</mat-error>
+              <mat-hint></mat-hint>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Descripcion del producto</mat-label>
+              <textarea matInput [(ngModel)]='descripcion' placeholder="Describa brevemente su producto"></textarea>
+            </mat-form-field>
+
+            <mat-form-field id="campo1" appearance="outline">
+              <mat-label>Precio del producto</mat-label>
+              <input matInput [(ngModel)]='precioProducto' placeholder="Solo numeros"
+                [formControl]="productoPrecioControl" required type="number">
+              <mat-error *ngIf="productoPrecioControl.hasError('required')">Este campo es requerido</mat-error>
+              <mat-hint></mat-hint>
+            </mat-form-field>
+
+
+            <mat-form-field id="campo1" appearance="outline">
               <mat-label>Tipo del producto</mat-label>
               <mat-select [formControl]="tipoProductoControl" required [(ngModel)]='tipo'>
                 <mat-option value="Producto">Producto</mat-option>
@@ -107,40 +110,40 @@
               <mat-error *ngIf="tipoProductoControl.hasError('required')">Selecciones alguno de los dos</mat-error>
               <mat-hint></mat-hint>
             </mat-form-field>
-              <ng-template [ngIf]="tipoProducto()">
-                <div>
-           <mat-form-field id="campo1"appearance="outline">
-                <mat-label>Kilates</mat-label>
-                <input matInput [(ngModel)]='kilate' placeholder="Solo numeros" type="number">
-                <mat-hint></mat-hint>
-              </mat-form-field>
-              <mat-form-field id="campo1"appearance="outline">
-                <mat-label>Peso(Gramos)</mat-label>
-                <input matInput [(ngModel)]='gramos' placeholder="Solo numeros" type="number">
-                <mat-hint></mat-hint>
-              </mat-form-field>
-                </div>
-              </ng-template>
-
-              
-             
+            <ng-template [ngIf]="tipoProducto()">
+              <div>
+                <mat-form-field id="campo1" appearance="outline">
+                  <mat-label>Kilates</mat-label>
+                  <input matInput [(ngModel)]='kilate' placeholder="Solo numeros" type="number">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+                <mat-form-field id="campo1" appearance="outline">
+                  <mat-label>Peso(Gramos)</mat-label>
+                  <input matInput [(ngModel)]='gramos' placeholder="Solo numeros" type="number">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+              </div>
+            </ng-template>
 
 
 
-    <mat-action-row>
-      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-      <button mat-button color="primary" (click)="nextStep()"(click)="validacion()">Finalizar</button>
-
-    </mat-action-row>
-  </mat-expansion-panel>
-
-</mat-accordion>
 
 
 
-        
-          
-        
+            <mat-action-row>
+              <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="metodo()">Finalizar</button>
+
+            </mat-action-row>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+
+
+
+
+
       </div>
     </div>
   </mat-tab>

@@ -50,7 +50,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { RegistrocvComponent } from './registrocv/registrocv.component';
 import { CompraComponent } from './herramientas/compra/compra.component';
 import { VentaComponent } from './herramientas/venta/venta.component';
 import { EmpenoComponent } from './herramientas/empeno/empeno.component';
@@ -62,6 +61,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import { TrabajadoresComponent } from './trabajadores/trabajadores.component';
 import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabajador.component';
+import { HistorialComponent } from './historial/historial.component';
 
 
 
@@ -77,7 +77,6 @@ import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabaj
     RegistrarComponent,
     ListaComponent,
     ClientesComponent,
-    RegistrocvComponent,
     CompraComponent,
     VentaComponent,
     EmpenoComponent,
@@ -85,6 +84,7 @@ import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabaj
     AddClienteComponent,
     TrabajadoresComponent,
     AddTrabajadorComponent,
+    HistorialComponent,
 
   ],
   imports: [
@@ -129,9 +129,6 @@ import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabaj
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
-    
-
     BrowserModule,
     HttpClientModule,
 

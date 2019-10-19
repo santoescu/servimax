@@ -65,8 +65,7 @@ class Trabajador (models.Model):
 class Transaccion(models.Model):
     ID_Transaccion = models.CharField(max_length=10)
     Fecha = models.CharField(max_length=10,null=False,blank=False)
-    Tipos = (('C', 'Compra'), ('V', 'Venta'), ('E', 'Empeño'))
-    Tipo = models.CharField(max_length=1, choices=Tipos, default='M')
+    Tipo = models.CharField(max_length=1, default='C')
     ID_Cliente = models.ForeignKey(Cliente, null = False, blank= False, on_delete=models.CASCADE)
     ID_Trabajadores = models.ForeignKey(Trabajador, null = False, blank= False, on_delete=models.CASCADE)
     ID_Admin = models.ForeignKey(Administrador, null = False, blank= False, on_delete=models.CASCADE)

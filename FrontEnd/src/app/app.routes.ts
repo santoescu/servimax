@@ -10,11 +10,12 @@ import {NoLoginGuard} from './no-login.guard';
 import {ListaComponent} from './usuarios/lista/lista.component';
 import {RegistrarComponent} from './usuarios/registrar/registrar.component';
 import {ClientesComponent} from './clientes/clientes.component';
-import {RegistrocvComponent} from './registrocv/registrocv.component';
 import { MailComponent } from "./mail/mail.component";
 import {AddClienteComponent} from "./clientes/add-cliente/add-cliente.component";
 import {TrabajadoresComponent} from './trabajadores/trabajadores.component';
 import {AddTrabajadorComponent} from './trabajadores/add-trabajador/add-trabajador.component';
+import { HistorialComponent } from "./historial/historial.component";
+
 
 
 const ROUTES: Routes = [
@@ -43,9 +44,10 @@ const ROUTES: Routes = [
             
         
         },
-        { path: 'registro', component: RegistrocvComponent, canActivate: [LoginGuard]},
         { path: 'mail', component: MailComponent, canActivate: [LoginGuard]},
-        
+
+        { path: 'historial', component: HistorialComponent, canActivate: [LoginGuard]},
+
         { 
             path: 'trabajadores',
             children: [

@@ -4,8 +4,8 @@ import { Headers, Http } from '@angular/http';
 import { Cliente } from './cliente';
 import { Trabajador } from './trabajador';
 import { Administrador } from './administrador';
-import { Transaccion } from './transaccion';
 import { TiempoLaborado } from './tiempo-laborado';
+import { Transaccion } from './transaccion';
 
 
 @Injectable()
@@ -87,7 +87,6 @@ export class DataService{
 
 
 		createTransacciones(d: Transaccion): Promise<Transaccion> {
-			console.log("llega al segundo");
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
