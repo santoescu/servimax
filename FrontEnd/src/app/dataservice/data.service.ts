@@ -87,6 +87,10 @@ export class DataService{
 
 
 		createTransacciones(d: Transaccion): Promise<Transaccion> {
+<<<<<<< HEAD
+=======
+			
+>>>>>>> 827cb21c7316f3f5912e79a27900e7dd3d3de25b
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
