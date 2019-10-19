@@ -6,6 +6,7 @@ import { Trabajador } from './trabajador';
 import { Administrador } from './administrador';
 import { TiempoLaborado } from './tiempo-laborado';
 import { Transaccion } from './transaccion';
+import { Producto } from './producto';
 
 
 @Injectable()
@@ -19,6 +20,11 @@ export class DataService{
 			return this.http.get('http://localhost:8000/Cliente?format=json', {headers: this.headers})
 				.toPromise()
 				.then(response => response.json() as Cliente[])
+		}
+		getProductos(): Promise<Producto[]> {
+			return this.http.get('http://localhost:8000/Producto?format=json', {headers: this.headers})
+				.toPromise()
+				.then(response => response.json() as Producto[])
 		}
 
 		getTrabajadores(): Promise<Trabajador[]> {
@@ -84,14 +90,17 @@ export class DataService{
 		}
 
 
+		createTransacciones(d: Transaccion): Promise<Transaccion> {
 
-
-		createTransacciones(d: Transaccion): Promise<Transaccion> {			
+			console.log("id: " + d.ID_Transaccion + " fecha " + d.Fecha+ " ad " + d.Id_Admin + " cli " + d.Id_Cliente
+			+ " tra " + d.Id_Trabajadores + " tip " +d.Tipo);
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
 			.then(res => res.json() as Transaccion)
 		}
+
+		
 
 }
 	

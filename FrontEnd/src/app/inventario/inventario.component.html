@@ -1,28 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
-  </div>
-</nav>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar" >
+</mat-form-field>
 
-<br>
-<div class="card-deck">
-    <div *ngFor="let producto of productos" class="card">
-      <img [src]="producto.img" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{producto.nombre}}</h5>
-        <p class="card-text">{{ producto.descripcion}}</p>
-      </div>
-      <button type="button" class="btn btn-primary btn-block">Ver información</button>
-    </div>
-</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Código">
+    <th mat-header-cell *matHeaderCellDef>Código</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  
+  <!-- Name Column -->
+  <ng-container matColumnDef="Transacción">
+    <th mat-header-cell *matHeaderCellDef> Transacción </th>
+    <td mat-cell *matCellDef="let element"> {{element.id_transaccion}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Precio">
+    <th mat-header-cell *matHeaderCellDef> Precio</th>
+    <td mat-cell *matCellDef="let element"> {{element.precioC}} </td>
+  </ng-container>
+   <ng-container matColumnDef="Tipo">
+    <th mat-header-cell *matHeaderCellDef>Tipo</th>
+    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+  </ng-container>
+  
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<a mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" [routerLink]="['add']">
+	<mat-icon>add</mat-icon>
+</a>
+
+

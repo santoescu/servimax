@@ -1,5 +1,4 @@
 export class Cliente{
-	id: number;
 	Id_Cliente : string;
     Primer_Apellido : string;
     Segundo_Apellido : string;

@@ -18,18 +18,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  transaccion = new Transaccion();
+
 
   trabajadores: Trabajador[] = [];
   clientes: Cliente[] = [];
-  transaccion = new Transaccion();
 
 
   idTrabajador: number;
   myControl = new FormControl();
   options: string[] = [];
-  idCliente: number[] = [];
+  idCliente: string[] = [];
   filteredOptions: Observable<string[]>;
-  idclliente: number;
+  idclliente: string;
   fecha: Date;
   dia: string;
   mes: string;
@@ -50,15 +51,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  guardar(): void {
-
-    this.transaccion.id = 1;
-    this.transaccion.ID_Transaccion = "1"
-    this.transaccion.Fecha = "20/10/2019";
-    this.transaccion.Tipo = "C";
-    this.transaccion.Id_Cliente = 1;
-    this.transaccion.Id_Trabajadores = 1;
-    this.transaccion.Id_Admin = 1;
+  save(): void {
 
     this.dataService.createTransacciones(this.transaccion)
       .then(
@@ -108,7 +101,7 @@ export class MenuComponent implements OnInit {
 
     for (let i = 0; i < this.clientes.length; i++) {
       this.options.push(this.clientes[i].Nombres + " " + this.clientes[i].Primer_Apellido + " " + this.clientes[i].Segundo_Apellido);
-      this.idCliente.push(this.clientes[i].id);
+      this.idCliente.push(this.clientes[i].Id_Cliente);
     }
 
   }
@@ -198,14 +191,23 @@ export class MenuComponent implements OnInit {
       }
 
     } else {
+      
 
+    this.transaccion.ID_Transaccion = "4";
+    this.transaccion.Fecha = this.fechaFin;
+    this.transaccion.Tipo = "C";
+    this.transaccion.Id_Cliente = this.idclliente;
+    this.transaccion.Id_Trabajadores = this.idTrabajador.toString();
+    this.transaccion.Id_Admin = "1054924578";
+
+    this.metodo();
 
     }
 
   }
 
   metodo() {
-    this.guardar();
+    this.save();
   }
 
 
