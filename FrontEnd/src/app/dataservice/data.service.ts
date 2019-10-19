@@ -87,7 +87,7 @@ export class DataService{
 
 
 		createTransacciones(d: Transaccion): Promise<Transaccion> {
-			console.log("llega al segundo");
+			
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()

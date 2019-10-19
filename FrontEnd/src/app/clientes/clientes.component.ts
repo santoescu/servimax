@@ -2,6 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './../dataservice/data.service';
 import { Cliente } from './../dataservice/cliente';
 import { Router } from '@angular/router';
+import {MatTableDataSource} from '@angular/material/table';
+
+export interface PeriodicElement {
+  cedula: string;
+  nombre: string;
+  primer: string;
+  segundo: string;
+  correo: string;
+  celular: string;
+}
+
+var ELEMENT_DATA: PeriodicElement[] = [];
 
 
 
@@ -16,10 +28,17 @@ export class ClientesComponent implements OnInit {
   clientes : Cliente[]=[];
   
   cliente = new Cliente();
+  displayedColumns: string[] = ['Identificacion', 'Nombres', 'Primer', 'Segundo','Correo','Celular'];
+  dataSource;
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  }
 
 
-	getClientes():void{
-		this.dataService.getClientes().then(clientes => this.clientes = clientes);
+	 async getClientes(){
+		await this.dataService.getClientes().then(clientes => this.clientes = clientes);
 	}
 
   delete(cli):void{
@@ -35,16 +54,30 @@ export class ClientesComponent implements OnInit {
 			)
 
 	}
-  constructor(private dataService: DataService,
-		private router: Router) { }
-
+  constructor(private dataService: DataService,private router: Router) { 
+    
+   
+   
+}
   redirect() {
-		this.router.navigate(['./menu/clientes'])
+		this.router.navigate(['./menu/clientes']);
 	}
 
-  ngOnInit() {
-  	this.getClientes();
-  	
-  }
+  async ngOnInit() {
+     await this.getClientes();
+     this.llenarDatos();
+     this.dataSource=new MatTableDataSource(ELEMENT_DATA);
+     console.log(this.clientes.length+"jaja");
 
+}
+
+  llenarDatos(){ 
+    console.log(this.clientes.length);
+    ELEMENT_DATA=[];
+   for (let i = 0; i < this.clientes.length; i++) {
+     console.log(this.clientes.length);
+        ELEMENT_DATA.push({cedula: this.clientes[i].Id_Cliente, nombre: this.clientes[i].Nombres, primer: this.clientes[i].Primer_Apellido, segundo: this.clientes[i].Segundo_Apellido,correo: this.clientes[i].Mail,celular: this.clientes[i].Celular});
+    }
+  }
+   
 }

@@ -21,6 +21,7 @@ import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { SharedModule } from './shared/shared.module';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
 
 //Componentes
 import { MenuComponent } from './menu/menu.component';
@@ -129,6 +130,7 @@ import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabaj
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTableModule,
 
     
 
