@@ -45,7 +45,7 @@ export class MenuComponent implements OnInit {
 
 
   constructor(private dataService: DataService, private _snackBar: MatSnackBar, private router: Router) {
-    this.llenarOptions();
+    
 
   }
 
@@ -74,18 +74,18 @@ export class MenuComponent implements OnInit {
 
 
 
-  getClientes(): void {
-    this.dataService.getClientes().then(clientes => this.clientes = clientes);
+  async getClientes() {
+   await this.dataService.getClientes().then(clientes => this.clientes = clientes);
   }
-  getTrabajadores(): void {
-    this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
+  async getTrabajadores() {
+   await this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
   }
 
 
-  ngOnInit() {
-    this.getClientes();
-    this.llenarOptions();
-    this.getTrabajadores();
+  async ngOnInit() {
+   await this.getClientes();
+   await this.getTrabajadores();
+   this.llenarOptions();
     console.log(this.trabajadores.length + " hola");
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
