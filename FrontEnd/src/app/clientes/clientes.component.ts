@@ -28,7 +28,7 @@ export class ClientesComponent implements OnInit {
   clientes : Cliente[]=[];
   
   cliente = new Cliente();
-  displayedColumns: string[] = ['Identificacion', 'Nombres', 'Primer', 'Segundo','Correo','Celular'];
+  displayedColumns: string[] = ['Identificacion', 'Nombres', 'Primer', 'Segundo','Correo','Celular','actions'];
   dataSource;
 
   applyFilter(filterValue: string) {
