@@ -130,13 +130,7 @@ import { HistorialComponent } from './historial/historial.component';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-<<<<<<< HEAD
-=======
     MatTableModule,
-
-    
-
->>>>>>> 827cb21c7316f3f5912e79a27900e7dd3d3de25b
     BrowserModule,
     HttpClientModule,
 
