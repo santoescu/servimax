@@ -39,11 +39,11 @@ export class InventarioComponent {
   }
 
   delete(cli): void {
-   // this.dataService.deleteClientes(cli.id);
-   // this.clientes = this.clientes.filter(a => a !== cli);
+    // this.dataService.deleteClientes(cli.id);
+    // this.clientes = this.clientes.filter(a => a !== cli);
   }
 
- 
+
   constructor(private dataService: DataService, private router: Router) {
 
 
@@ -69,11 +69,4 @@ export class InventarioComponent {
     }
   }
 
-
-
 }
-
-
-
-
-

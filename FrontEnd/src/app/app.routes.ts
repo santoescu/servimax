@@ -25,7 +25,9 @@ const ROUTES: Routes = [
     { path: 'menu', component: NavigationComponent, canActivate: [LoginGuard], children:[
         { path: 'transacciones', component: MenuComponent, canActivate: [LoginGuard]},
         { path: 'herramientas', component: CalculadoraComponent, canActivate: [LoginGuard]},
+
         { path: 'inventario', component: InventarioComponent, canActivate: [LoginGuard]},
+        
         { path: 'usuarios', component: ListaComponent, canActivate: [LoginGuard]},
         { path: 'registrar', component: RegistrarComponent, canActivate: [LoginGuard]},
         { 

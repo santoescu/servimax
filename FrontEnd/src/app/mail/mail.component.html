@@ -1,1 +1,31 @@
-<p>mail works!</p>
+<mat-card>
+	<ng-template tdLoading="trabajadores.list">
+		<mat-list class="will-load">
+			<div class="pad" *ngIf="trabajadores?.length === 0" layout="row" layout-align="center">
+				<h3> No hay trabajadores para mostrar </h3>
+			</div>
+			<ng-template let-art let-last="last" ngFor [ngForOf]="trabajadores">
+				<mat-list-item>
+					<mat-icon matListAvatar>person</mat-icon>
+					<h3 matLine> Fecha: {{art.fecha}}</h3>
+					<h3 matLine> Identificado empleado: {{art.Id_Trabajador}}</h3>
+					<h3 matLine> Hotas: {{art.horas}}</h3>
+					<h3 matLine> Minutos: {{art.minutos}}</h3>
+					<h3 matLine> Segundos: {{art.segundos}}</h3>
+					<button mat-icon-button (click)="enviar(art)">
+						<mat-icon>payment</mat-icon>
+					</button>
+					<button mat-icon-button (click)="delete(art)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-list-item>
+				<mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+			</ng-template>
+		</mat-list>
+	</ng-template>
+</mat-card>
+<a mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" [routerLink]="['addTrabajadores']">
+	<mat-icon>add</mat-icon>
+</a>
+
+

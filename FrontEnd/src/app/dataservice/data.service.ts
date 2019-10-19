@@ -32,6 +32,11 @@ export class DataService{
 				.toPromise()
 				.then(response => response.json() as Trabajador[])
 		}
+		getTiempos(): Promise<TiempoLaborado[]> {
+			return this.http.get('http://localhost:8000/Tiempo?format=json', {headers: this.headers})
+				.toPromise()
+				.then(response => response.json() as TiempoLaborado[])
+		}
 
 		getAdministrador(): Promise<Administrador[]> {
 			return this.http.get('http://localhost:8000/Administrador', {headers: this.headers})

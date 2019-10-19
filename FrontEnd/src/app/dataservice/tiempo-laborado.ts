@@ -1,6 +1,6 @@
 export class TiempoLaborado{
 	fecha : string;
-	Id_Trabajador : number;
+	Id_Trabajador : string;
     horas : string;
     minutos: string;
     segundos : string;
@@ -9,7 +9,7 @@ export class TiempoLaborado{
         this.fecha = fecha;
     }
 
-    setIdTrabajador(Id_Trabajador: number): void{
+    setIdTrabajador(Id_Trabajador: string): void{
         this.Id_Trabajador = Id_Trabajador;
     }
 

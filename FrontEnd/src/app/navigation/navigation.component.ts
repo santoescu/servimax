@@ -107,7 +107,7 @@ export class NavigationComponent {
 
     tiempoLaborado.setFecha(salida);
     tiempoLaborado.setHoras(this.horas.toString());
-    tiempoLaborado.setIdTrabajador(1);
+    tiempoLaborado.setIdTrabajador("1053825754");
     tiempoLaborado.setMinutos(this.minutos.toString());
     tiempoLaborado.setSegundos(this.segundos.toString());  
 

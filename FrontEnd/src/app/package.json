@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-cookie": "^4.1.0",
     "angular-sweetalert": "^1.1.2",
     "dotenv": "^8.2.0",
     "nativescript-email": "^1.5.5",
