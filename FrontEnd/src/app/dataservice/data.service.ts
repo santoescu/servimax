@@ -51,7 +51,7 @@ export class DataService{
 		}
 
 
-		deleteClientes(id: number): Promise<void> {
+		deleteClientes(id: string): Promise<void> {
 			const url = `${"http://localhost:8000/Cliente"}/${id}`;
 			return this.http.delete(url, {headers: this.headers})
 				.toPromise()

@@ -22,30 +22,18 @@ import { SharedModule } from './shared/shared.module';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
-
-//Componentes
 import { MenuComponent } from './menu/menu.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { InventarioComponent } from './inventario/inventario.component'
-
-
-//Rutas
 import {APP_ROUTING} from './app.routes';
-
-//servicio
 import {InventarioService, UserMaster} from './app.service';
 import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './usuarios/registrar/registrar.component';
 import { ListaComponent } from './usuarios/lista/lista.component';
 import { DataService } from './dataservice/data.service';
-
-
-//guards
 import { LoginGuard } from './login.guard';
 import { NoLoginGuard } from './no-login.guard';
 import { ClientesComponent } from './clientes/clientes.component';
-
-
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';

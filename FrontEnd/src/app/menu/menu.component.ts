@@ -193,7 +193,6 @@ export class MenuComponent implements OnInit {
     } else {
       
 
-    this.transaccion.ID_Transaccion = "4";
     this.transaccion.Fecha = this.fechaFin;
     this.transaccion.Tipo = "C";
     this.transaccion.Id_Cliente = this.idclliente;

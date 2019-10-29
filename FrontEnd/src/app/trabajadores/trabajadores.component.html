@@ -7,16 +7,12 @@
 			<ng-template let-art let-last="last" ngFor [ngForOf]="trabajadores">
 				<mat-list-item>
 					<mat-icon matListAvatar>person</mat-icon>
-					<h3 matLine> ID: {{art.id}}</h3>
+					
 					<h3 matLine> Nombre: {{art.Nombres}}</h3>
 					<h3 matLine> Primer apellido: {{art.Primer_Apellido}}</h3>
 					<h3 matLine> Segundo apellido: {{art.Segundo_Apellido}}</h3>
-					<h3 matLine> Primer apellido: {{art.Primer_Apellido}}</h3>
 					<h3 matLine> Celular: {{art.Celular}}</h3>
 					<h3 matLine> Mail: {{art.Mail}}</h3>
-					<h3 matLine> Sexo: {{art.Sexo}}</h3>
-					<h3 matLine> Clave: {{art.Clave}} </h3>
-					<h3 matLine> Id admin: {{art.Id_Admin}}</h3>
 					<button mat-icon-button (click)="enviar(art)">
 						<mat-icon>payment</mat-icon>
 					</button>

@@ -28,7 +28,7 @@ export class ClientesComponent implements OnInit {
   clientes : Cliente[]=[];
   
   cliente = new Cliente();
-  displayedColumns: string[] = ['Identificacion', 'Nombres', 'Primer', 'Segundo','Correo','Celular'];
+  displayedColumns: string[] = ['Identificacion', 'Nombres', 'Primer', 'Segundo','Correo','Celular','actions'];
   dataSource;
 
   applyFilter(filterValue: string) {
@@ -41,9 +41,11 @@ export class ClientesComponent implements OnInit {
 		await this.dataService.getClientes().then(clientes => this.clientes = clientes);
 	}
 
-  delete(cli):void{
-    this.dataService.deleteClientes(cli.id);
-    this.clientes = this.clientes.filter(a => a !== cli);
+  delete(cli:string):void{
+
+    this.dataService.deleteClientes(cli).then(
+        () => this.redirect());
+    //this.clientes = this.clientes.filter(a => a !== cli);
   }
 
   enviar(cli): void {
@@ -60,7 +62,7 @@ export class ClientesComponent implements OnInit {
    
 }
   redirect() {
-		this.router.navigate(['./menu/clientes']);
+		this.router.navigate(['./menu/clientes/add']);
 	}
 
   async ngOnInit() {
@@ -72,10 +74,9 @@ export class ClientesComponent implements OnInit {
 }
 
   llenarDatos(){ 
-    console.log(this.clientes.length);
+    
     ELEMENT_DATA=[];
    for (let i = 0; i < this.clientes.length; i++) {
-     console.log(this.clientes.length);
         ELEMENT_DATA.push({cedula: this.clientes[i].Id_Cliente, nombre: this.clientes[i].Nombres, primer: this.clientes[i].Primer_Apellido, segundo: this.clientes[i].Segundo_Apellido,correo: this.clientes[i].Mail,celular: this.clientes[i].Celular});
     }
   }
