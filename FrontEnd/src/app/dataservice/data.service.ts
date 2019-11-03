@@ -39,7 +39,7 @@ export class DataService{
 		}
 
 		getAdministrador(): Promise<Administrador[]> {
-			return this.http.get('http://localhost:8000/Administrador', {headers: this.headers})
+			return this.http.get('http://localhost:8000/Administrador?format=json', {headers: this.headers})
 				.toPromise()
 				.then(response => response.json() as Administrador[])
 		}
@@ -77,17 +77,18 @@ export class DataService{
 			.then(res => res.json() as Trabajador)
 		}
 
-		enviarMail(d: Cliente): Promise<Cliente> {
+		enviarMail(d: string): Promise<Cliente> {
+
+
+			const url = `${"http://localhost:8000/Send"}/${d}`;
 			return this.http
-			.post("http://localhost:8000/Send", JSON.stringify(d), {headers: this.headers})
+			.post(url, JSON.stringify(d), {headers: this.headers})
 			.toPromise()
 			.then(res => res.json() as Cliente)
 		}
 
 
 		crearRegistroTabla(d: TiempoLaborado): Promise<TiempoLaborado> {
-
-			console.log("prueba " + d.segundos);
 			return this.http
 			.post("http://localhost:8000/Tiempo", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
@@ -96,9 +97,10 @@ export class DataService{
 
 
 		createTransacciones(d: Transaccion): Promise<Transaccion> {
+			d.ID_Transaccion = "20";
 
-			console.log("id: " + d.ID_Transaccion + " fecha " + d.Fecha+ " ad " + d.Id_Admin + " cli " + d.Id_Cliente
-			+ " tra " + d.Id_Trabajadores + " tip " +d.Tipo);
+			console.log("id: " + d.ID_Transaccion + " fecha " + d.Fecha + " tip " +d.Tipo+ " ad " + d.ID_Admin + " cli " + d.ID_Cliente
+			+ " tra " + d.ID_Trabajadores );
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()

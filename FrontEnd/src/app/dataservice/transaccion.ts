@@ -2,8 +2,8 @@ export class Transaccion{
     ID_Transaccion: string;
     Fecha: string;
     Tipo : string;
-    Id_Cliente : string;
-    Id_Trabajadores : string;
-    Id_Admin : string;
+    ID_Cliente : string;
+    ID_Trabajadores : string;
+    ID_Admin : string;
 
 }

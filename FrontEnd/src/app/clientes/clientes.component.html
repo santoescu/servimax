@@ -38,7 +38,7 @@
   <ng-container matColumnDef="actions">
   	<mat-header-cell *matHeaderCellDef></mat-header-cell>
   	<mat-cell *matCellDef="let element">
-  		<button mat-icon-button (click)="enviar(element.cedula)">
+  		<button mat-icon-button (click)="enviar(element.correo)">
 						<mat-icon>payment</mat-icon>
 		</button>
 		<button mat-icon-button (click)="delete(element.cedula)">

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserMaster} from '../app.service';
 import { DataService } from './../dataservice/data.service';
 import { TiempoLaborado } from '../dataservice/tiempo-laborado';
+import { Trabajador } from '../dataservice/trabajador';
 
 
 
@@ -33,9 +34,14 @@ export class NavigationComponent {
   message: string;
   editMessage: string;
 
+  trabajadorJSON = localStorage.getItem('email');
+  nombre: string;
+
   dia: number;
   mes: number;
   anio: number;
+
+  prueba: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -48,6 +54,10 @@ export class NavigationComponent {
      this.dia = this.fecha.getDate();
      this.mes = this.fecha.getMonth()+1;
      this.anio = this.fecha.getFullYear();
+
+     var aux: Trabajador = JSON.parse(this.trabajadorJSON);
+
+     this.nombre = aux.Nombres + " " + aux.Primer_Apellido;
   }
 
   ngOnInit() {
@@ -83,7 +93,19 @@ export class NavigationComponent {
     localStorage.removeItem('email');
     this.router.navigate(['/login']);
 
-    this.enviarDatos();
+    var horaI = localStorage.getItem('hora');
+    var minutosI = localStorage.getItem('minuto');
+    var segundosI = localStorage.getItem('segundo')
+
+    var horaF = this.fecha.getHours();
+    var minutosF = this.fecha.getMinutes();
+    var segundosF = this.fecha.getSeconds();
+
+    console.log(minutosF +" " + minutosI);
+
+    
+
+    //this.enviarDatos();
     
   }
 
@@ -111,8 +133,9 @@ export class NavigationComponent {
     tiempoLaborado.setMinutos(this.minutos.toString());
     tiempoLaborado.setSegundos(this.segundos.toString());  
 
+    
 
-    console.log("llama enviar datos");
+
 
     
 
@@ -139,6 +162,7 @@ export class NavigationComponent {
 
   redirect() {
 		this.router.navigate(['./menu/clientes'])
-	}
+  }
+  
 
 }

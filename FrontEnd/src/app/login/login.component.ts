@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DataService } from './../dataservice/data.service';
 import { Trabajador } from './../dataservice/trabajador';
 import { UserMaster} from '../app.service';
+import { Administrador } from '../dataservice/administrador';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,12 @@ export class LoginComponent implements OnInit {
   message: string;
   editMessage: string;
 
-  fechaInicial: Date;
+  fechaInicial = new Date();
 
   getTrabajadores():void{
     this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
   }
+
 
   constructor(private router: Router, private dataService: DataService, private usuarioM: UserMaster) { }
 
@@ -32,21 +34,21 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
 
-    trabajadores : this.getTrabajadores();
 
       for (let i = 0; i < this.trabajadores.length; i++) {
         if(form.value.email === this.trabajadores[i].Mail && form.value.password === this.trabajadores[i].Clave ){
           this.usuarioM.setUsuario(this.trabajadores[i].Nombres);
-          localStorage.setItem('email', form.value.email);
+          localStorage.setItem('email', JSON.stringify(this.trabajadores[i]));
           this.router.navigate(['/menu']);
 
-          this.usuarioM.changeMessage(this.trabajadores[i].Nombres);
-        } else if(form.value.email === "sescuderoh@uqvirtual.edu.co" && form.value.password === "0000" ){
-          this.usuarioM.setUsuario(this.trabajadores[i].Nombres);
-          localStorage.setItem('email', form.value.email);
-          this.router.navigate(['/menu']);
+          
         }
       }
+
+      localStorage.setItem('hora', this.fechaInicial.getHours().toString());
+      localStorage.setItem('minuto', this.fechaInicial.getMinutes().toString());
+      localStorage.setItem('segundo', this.fechaInicial.getSeconds().toString());
+      
   }
 
 }

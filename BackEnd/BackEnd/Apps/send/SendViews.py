@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import HttpResponse
+import json
 
 
+def send_view(request, slug):
 
-def send_view(request, *args, **kwargs):
+	print(slug)
 
-	if(request.method == 'POST'):
-		print('si')
-	
-	send_mail('Hola',
-		'Mensaje final',
-		'ceq930127@gmail.com',
-		['harveyja@yahoo.com'],
-		fail_silently=False)
+	send_mail(
+    'Solicitud de cobro compraventa ServiMax.',
+    'Apreciado cliente, le invitamos que realice su pago por medio del siguiente link:\nhttps://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/\n\nGracias',
+    'ceq930127@gmail.com',
+    [slug],
+    fail_silently=False,)
 	return HttpResponse ("<h1> Enviado </h1>")

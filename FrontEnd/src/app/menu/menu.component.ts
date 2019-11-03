@@ -141,6 +141,8 @@ export class MenuComponent implements OnInit {
 
   }
   obtenerFecha() {
+
+    console.log("sdfafsasdf" + this.fecha.getHours)
     this.dia = this.fecha.getDate().toString();
     this.mes = (this.fecha.getMonth() + 1).toString();
     this.anio = this.fecha.getFullYear().toString();
@@ -195,9 +197,9 @@ export class MenuComponent implements OnInit {
 
     this.transaccion.Fecha = this.fechaFin;
     this.transaccion.Tipo = "C";
-    this.transaccion.Id_Cliente = this.idclliente;
-    this.transaccion.Id_Trabajadores = this.idTrabajador.toString();
-    this.transaccion.Id_Admin = "1054924578";
+    this.transaccion.ID_Cliente = this.idclliente;
+    this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
+    this.transaccion.ID_Admin = "1054924578";
 
     this.metodo();
 

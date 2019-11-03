@@ -48,12 +48,13 @@ export class ClientesComponent implements OnInit {
     //this.clientes = this.clientes.filter(a => a !== cli);
   }
 
-  enviar(cli): void {
+  enviar(cli: string): void {
+
 		this.dataService.enviarMail(cli)
 			.then(
 				() => this.redirect(),
-				() => console.log("Error"),
-			)
+				() => console.log("Enviado con éxito"),
+      )
 
 	}
   constructor(private dataService: DataService,private router: Router) { 
@@ -69,7 +70,6 @@ export class ClientesComponent implements OnInit {
      await this.getClientes();
      this.llenarDatos();
      this.dataSource=new MatTableDataSource(ELEMENT_DATA);
-     console.log(this.clientes.length+"jaja");
 
 }
 
