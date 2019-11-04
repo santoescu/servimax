@@ -1,5 +1,5 @@
 export class Transaccion{
-    ID_Transaccion: string;
+    ID_Transaccion: number;
     Fecha: string;
     Tipo : string;
     ID_Cliente : string;

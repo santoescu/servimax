@@ -63,7 +63,7 @@ class Trabajador (models.Model):
         return self.obtenerDatosTrabajador()
 
 class Transaccion(models.Model):
-    ID_Transaccion = models.CharField(max_length=10, primary_key=True)
+    ID_Transaccion = models.AutoField(primary_key=True)
     Fecha = models.CharField(max_length=10,null=False,blank=False)
     Tipo = models.CharField(max_length=1, default='C')
     ID_Cliente = models.ForeignKey(Cliente, null = False, blank= False, on_delete=models.CASCADE)
@@ -79,7 +79,7 @@ class Transaccion(models.Model):
     
 
 class Producto(models.Model):
-    Id_Producto = models.CharField(max_length = 12, primary_key=True)
+    Id_Producto = models.AutoField(primary_key=True)
     ID_Transaccion = models.ForeignKey(Transaccion, null = False, blank= False, on_delete=models.CASCADE)
     Nombre = models.CharField(max_length = 20)
     Descripcion = models.TextField(blank = True, null = True)

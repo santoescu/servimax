@@ -6,8 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 export interface PeriodicElement {
-  id: string;
-  id_transaccion: string;
+  id: number;
+  id_transaccion: number;
   nombre: string;
   precioC: number;
   tipo: string;

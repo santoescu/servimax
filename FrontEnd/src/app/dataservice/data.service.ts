@@ -104,8 +104,8 @@ export class DataService{
 		}
 
 		createProducto(d: Producto): Promise<Producto> {
-			d.Id_Producto = "20";
-			d.ID_Transaccion="20";
+			// d.Id_Producto = "20";
+			// d.ID_Transaccion="20";
 			return this.http
 			.post("http://localhost:8000/Producto", JSON.stringify(d), {headers: this.headers})
 			.toPromise()

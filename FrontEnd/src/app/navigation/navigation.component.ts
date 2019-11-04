@@ -97,11 +97,22 @@ export class NavigationComponent {
     var minutosI = localStorage.getItem('minuto');
     var segundosI = localStorage.getItem('segundo')
 
-    var horaF = this.fecha.getHours();
-    var minutosF = this.fecha.getMinutes();
-    var segundosF = this.fecha.getSeconds();
+    // var fechaF  = new Date()
 
-    console.log(minutosF +" " + minutosI);
+    // var horaF = fechaF.getHours();
+    // var minutosF = fechaF.getMinutes();
+    // var segundosF = fechaF.getSeconds();
+
+    // console.log("ini: " + minutosI +" " + segundosI);
+
+    // console.log("fi: " + minutosF+" " + segundosF);
+
+
+    var date = localStorage.getItem('tiempo')
+
+    var x = Date.parse(date);
+
+    console.log(x)
 
     
 

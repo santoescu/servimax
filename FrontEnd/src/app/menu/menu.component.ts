@@ -25,6 +25,7 @@ export class MenuComponent implements OnInit {
 
   trabajadores: Trabajador[] = [];
   clientes: Cliente[] = [];
+  transacciones: Transaccion[] = [];
 
 
   idTrabajador: number;
@@ -69,7 +70,8 @@ export class MenuComponent implements OnInit {
 
 
   async saveProducto(){
-
+    var t = this.getUltimaTransaccion();
+    this.producto.ID_Transaccion = t.ID_Transaccion;
     await this.dataService.createProducto(this.producto)
       .then(
         () => this.redirect(),
@@ -86,6 +88,18 @@ export class MenuComponent implements OnInit {
   async getTrabajadores() {
    await this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
   }
+
+  async getTransacciones() {
+    await this.dataService.getTransacciones().then(transacciones => this.transacciones = transacciones);
+   }
+
+   getUltimaTransaccion(): Transaccion{
+     console.log("tam " + this.transacciones.length)
+
+     var t : Transaccion = this.transacciones[this.transacciones.length - 1];
+
+     return t;
+   }
 
 
   async ngOnInit() {
@@ -184,12 +198,13 @@ export class MenuComponent implements OnInit {
       this._snackBar.open("Selecciona la fecha", "", { duration: 5000 });
       this.step = 1;
     } else{
-    this.transaccion.ID_Transaccion = "20";
     this.transaccion.Fecha = this.fechaFin;
     this.transaccion.Tipo = "C";
     this.transaccion.ID_Cliente = this.idclliente;
     this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
     this.transaccion.ID_Admin = "1054924578";
+
+    await this.getTransacciones();
     await this.save();
 
   }
@@ -208,7 +223,6 @@ export class MenuComponent implements OnInit {
       this._snackBar.open("Selecciona la fecha", "", { duration: 5000 });
       this.step = 1;
     } else{
-      this.transaccion.ID_Transaccion = "30";
     this.transaccion.Fecha = this.fechaFin;
     this.transaccion.Tipo = "V";
     this.transaccion.ID_Cliente = this.idclliente;
@@ -232,7 +246,6 @@ export class MenuComponent implements OnInit {
       this._snackBar.open("Selecciona la fecha", "", { duration: 5000 });
       this.step = 1;
     } else{
-      this.transaccion.ID_Transaccion = "10";
     this.transaccion.Fecha = this.fechaFin;
     this.transaccion.Tipo = "E";
     this.transaccion.ID_Cliente = this.idclliente;
@@ -263,6 +276,8 @@ export class MenuComponent implements OnInit {
       } 
     } else {
       
+    
+    console.log("sdffsdafdsfsdfsd " + this.producto.ID_Transaccion)
     this.producto.Descripcion=this.descripcion;
     this.producto.Nombre=this.nombreProducto;
     this.producto.Precio_De_Compra=Number(this.precioProducto);
