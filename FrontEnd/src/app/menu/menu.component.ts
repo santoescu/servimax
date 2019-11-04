@@ -40,8 +40,8 @@ export class MenuComponent implements OnInit {
   fechaFin: string = "";
   tipo: string = "Producto";
   descripcion: string = "";
-  kilate: string = "";
-  gramos: string = "";
+  kilate: string = "0";
+  gramos: string = "0";
   nombreProducto: string = "";
   precioProducto: string = "";
   precioVentaProducto: string = "";
@@ -54,9 +54,9 @@ export class MenuComponent implements OnInit {
   }
 
 
-  save(): void {
+  async save() {
 
-    this.dataService.createTransacciones(this.transaccion)
+    await this.dataService.createTransacciones(this.transaccion)
       .then(
         () => this.redirect(),
         () => console.log("Error"),
@@ -68,9 +68,9 @@ export class MenuComponent implements OnInit {
   }
 
 
-  saveProducto(): void{
+  async saveProducto(){
 
-    this.dataService.createProducto(this.producto)
+    await this.dataService.createProducto(this.producto)
       .then(
         () => this.redirect(),
         () => console.log("Error"),
@@ -171,7 +171,7 @@ export class MenuComponent implements OnInit {
     return false;
   }
 
-  validacion() {
+ async crearTransaccionCompra(){
     if (this.idclliente == null) {
       this._snackBar.open("Selecciona un cliente", "", { duration: 5000 });
       this.step = 0;
@@ -183,7 +183,69 @@ export class MenuComponent implements OnInit {
     } else if (this.fechaFin == null) {
       this._snackBar.open("Selecciona la fecha", "", { duration: 5000 });
       this.step = 1;
-    } else if (this.nombreProducto == null) {
+    } else{
+    this.transaccion.ID_Transaccion = "20";
+    this.transaccion.Fecha = this.fechaFin;
+    this.transaccion.Tipo = "C";
+    this.transaccion.ID_Cliente = this.idclliente;
+    this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
+    this.transaccion.ID_Admin = "1054924578";
+    await this.save();
+
+  }
+
+  }
+  async crearTransaccionVenta(){
+    if (this.idclliente == null) {
+      this._snackBar.open("Selecciona un cliente", "", { duration: 5000 });
+      this.step = 0;
+
+    } else if (this.idTrabajador == null) {
+      this._snackBar.open("Selecciona el empleado", "", { duration: 5000 });
+      this.step = 1;
+
+    } else if (this.fechaFin == null) {
+      this._snackBar.open("Selecciona la fecha", "", { duration: 5000 });
+      this.step = 1;
+    } else{
+      this.transaccion.ID_Transaccion = "30";
+    this.transaccion.Fecha = this.fechaFin;
+    this.transaccion.Tipo = "V";
+    this.transaccion.ID_Cliente = this.idclliente;
+    this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
+    this.transaccion.ID_Admin = "1054924578";
+    await this.save();
+
+  }
+
+  }
+  async crearTransaccionEmpeno(){
+    if (this.idclliente == null) {
+      this._snackBar.open("Selecciona un cliente", "", { duration: 5000 });
+      this.step = 0;
+
+    } else if (this.idTrabajador == null) {
+      this._snackBar.open("Selecciona el empleado", "", { duration: 5000 });
+      this.step = 1;
+
+    } else if (this.fechaFin == null) {
+      this._snackBar.open("Selecciona la fecha", "", { duration: 5000 });
+      this.step = 1;
+    } else{
+      this.transaccion.ID_Transaccion = "10";
+    this.transaccion.Fecha = this.fechaFin;
+    this.transaccion.Tipo = "E";
+    this.transaccion.ID_Cliente = this.idclliente;
+    this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
+    this.transaccion.ID_Admin = "1054924578";
+    await this.save();
+
+  }
+
+  }
+
+  async validacion() {
+     if (this.nombreProducto == null) {
       this._snackBar.open("Digite el nombre del producto", "", { duration: 5000 });
       this.step = 2;
 
@@ -201,33 +263,14 @@ export class MenuComponent implements OnInit {
       } 
     } else {
       
-
-    this.transaccion.Fecha = this.fechaFin;
-    this.transaccion.Tipo = "C";
-    this.transaccion.ID_Cliente = this.idclliente;
-    this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
-    this.transaccion.ID_Admin = "1054924578";
-
     this.producto.Descripcion=this.descripcion;
     this.producto.Nombre=this.nombreProducto;
     this.producto.Precio_De_Compra=Number(this.precioProducto);
     this.producto.Precio_De_Venta=Number(this.precioVentaProducto);
-    this.producto.Tipo="P";
+    this.producto.Tipo=this.tipo;
     this.producto.Kilates=this.kilate;
     this.producto.Kilogramos=this.gramos;
-
-
-
-
-
-
-    this.save();
-
-    this.saveProducto();
-
-
-
-
+   await this.saveProducto();
     }
 
   }

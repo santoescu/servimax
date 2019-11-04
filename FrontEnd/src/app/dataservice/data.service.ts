@@ -97,7 +97,6 @@ export class DataService{
 
 
 		createTransacciones(d: Transaccion): Promise<Transaccion> {
-			d.ID_Transaccion = "20";
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()

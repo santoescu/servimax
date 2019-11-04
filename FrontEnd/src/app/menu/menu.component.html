@@ -65,7 +65,7 @@
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()">Siguiente</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()" (click)="crearTransaccionCompra()">Siguiente</button>
             </mat-action-row>
           </mat-expansion-panel>
 
@@ -104,8 +104,8 @@
             <mat-form-field id="campo1" appearance="outline">
               <mat-label>Tipo del producto</mat-label>
               <mat-select [formControl]="tipoProductoControl" required [(ngModel)]='tipo'>
-                <mat-option value="Producto">Producto</mat-option>
-                <mat-option value="Joya">Joya</mat-option>
+                <mat-option value="P">Producto</mat-option>
+                <mat-option value="J">Joya</mat-option>
               </mat-select>
               <mat-error *ngIf="tipoProductoControl.hasError('required')">Selecciones alguno de los dos</mat-error>
               <mat-hint></mat-hint>
@@ -138,11 +138,6 @@
           </mat-expansion-panel>
 
         </mat-accordion>
-
-
-
-
-
 
       </div>
     </div>
@@ -209,12 +204,12 @@
               <mat-label>Fecha</mat-label>
               <input matInput [matDatepicker]="picker2" placeholder="dd/mm/aaaa" [(ngModel)]='fecha'>
               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker touchUi #picker></mat-datepicker>
+              <mat-datepicker touchUi #picker2></mat-datepicker>
             </mat-form-field>
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()">Siguiente</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()" (click)="crearTransaccionVenta()">Siguiente</button>
             </mat-action-row>
           </mat-expansion-panel>
 
@@ -253,8 +248,8 @@
             <mat-form-field id="campo1" appearance="outline">
               <mat-label>Tipo del producto</mat-label>
               <mat-select [formControl]="tipoProductoControl" required [(ngModel)]='tipo'>
-                <mat-option value="Producto">Producto</mat-option>
-                <mat-option value="Joya">Joya</mat-option>
+                <mat-option value="P">Producto</mat-option>
+                <mat-option value="J">Joya</mat-option>
               </mat-select>
               <mat-error *ngIf="tipoProductoControl.hasError('required')">Selecciones alguno de los dos</mat-error>
               <mat-hint></mat-hint>
@@ -281,20 +276,16 @@
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-              <button mat-button color="primary" (click)="nextStep()" (click)="metodo()">Finalizar</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="validacion()">Finalizar</button>
 
             </mat-action-row>
           </mat-expansion-panel>
 
         </mat-accordion>
 
-
-
-
-
-
       </div>
     </div>
+    
 
   </mat-tab>
   <mat-tab label="Empeño">
@@ -358,12 +349,12 @@
               <mat-label>Fecha</mat-label>
               <input matInput [matDatepicker]="picker3" placeholder="dd/mm/aaaa" [(ngModel)]='fecha'>
               <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-              <mat-datepicker touchUi #picker></mat-datepicker>
+              <mat-datepicker touchUi #picker3></mat-datepicker>
             </mat-form-field>
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()">Siguiente</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="obtenerFecha()" (click)="crearTransaccionEmpeno()">Siguiente</button>
             </mat-action-row>
           </mat-expansion-panel>
 
@@ -402,8 +393,8 @@
             <mat-form-field id="campo1" appearance="outline">
               <mat-label>Tipo del producto</mat-label>
               <mat-select [formControl]="tipoProductoControl" required [(ngModel)]='tipo'>
-                <mat-option value="Producto">Producto</mat-option>
-                <mat-option value="Joya">Joya</mat-option>
+                <mat-option value="P">Producto</mat-option>
+                <mat-option value="J">Joya</mat-option>
               </mat-select>
               <mat-error *ngIf="tipoProductoControl.hasError('required')">Selecciones alguno de los dos</mat-error>
               <mat-hint></mat-hint>
@@ -430,19 +421,15 @@
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Anterior</button>
-              <button mat-button color="primary" (click)="nextStep()" (click)="metodo()">Finalizar</button>
+              <button mat-button color="primary" (click)="nextStep()" (click)="validacion()">Finalizar</button>
 
             </mat-action-row>
           </mat-expansion-panel>
 
         </mat-accordion>
 
-
-
-
-
-
       </div>
     </div>
+    
   </mat-tab>
 </mat-tab-group>
