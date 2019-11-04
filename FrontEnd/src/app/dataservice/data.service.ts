@@ -98,13 +98,19 @@ export class DataService{
 
 		createTransacciones(d: Transaccion): Promise<Transaccion> {
 			d.ID_Transaccion = "20";
-
-			console.log("id: " + d.ID_Transaccion + " fecha " + d.Fecha + " tip " +d.Tipo+ " ad " + d.ID_Admin + " cli " + d.ID_Cliente
-			+ " tra " + d.ID_Trabajadores );
 			return this.http
 			.post("http://localhost:8000/Transaccion", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
 			.then(res => res.json() as Transaccion)
+		}
+
+		createProducto(d: Producto): Promise<Producto> {
+			d.Id_Producto = "20";
+			d.ID_Transaccion="20";
+			return this.http
+			.post("http://localhost:8000/Producto", JSON.stringify(d), {headers: this.headers})
+			.toPromise()
+			.then(res => res.json() as Producto)
 		}
 
 		

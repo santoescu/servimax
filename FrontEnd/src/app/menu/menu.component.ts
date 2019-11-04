@@ -7,6 +7,7 @@ import { DataService } from './../dataservice/data.service';
 import { Cliente } from './../dataservice/cliente';
 import { Trabajador } from './../dataservice/trabajador';
 import { Transaccion } from './../dataservice/transaccion';
+import { Producto } from './../dataservice/producto';
 import { Router } from '@angular/router';
 
 
@@ -19,6 +20,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   transaccion = new Transaccion();
+  producto= new Producto();
 
 
   trabajadores: Trabajador[] = [];
@@ -42,6 +44,7 @@ export class MenuComponent implements OnInit {
   gramos: string = "";
   nombreProducto: string = "";
   precioProducto: string = "";
+  precioVentaProducto: string = "";
   ID_Transaccion: string = "";
 
 
@@ -58,10 +61,20 @@ export class MenuComponent implements OnInit {
         () => this.redirect(),
         () => console.log("Error"),
       )
-
   }
+
   redirect() {
     this.router.navigate(['./menu/transacciones'])
+  }
+
+
+  saveProducto(): void{
+
+    this.dataService.createProducto(this.producto)
+      .then(
+        () => this.redirect(),
+        () => console.log("Error"),
+      )
   }
 
 
@@ -79,7 +92,6 @@ export class MenuComponent implements OnInit {
    await this.getClientes();
    await this.getTrabajadores();
    this.llenarOptions();
-    console.log(this.trabajadores.length + " hola");
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -142,11 +154,11 @@ export class MenuComponent implements OnInit {
   }
   obtenerFecha() {
 
-    console.log("sdfafsasdf" + this.fecha.getHours)
     this.dia = this.fecha.getDate().toString();
     this.mes = (this.fecha.getMonth() + 1).toString();
     this.anio = this.fecha.getFullYear().toString();
     this.fechaFin = this.dia + "/" + this.mes + "/" + this.anio;
+    
   }
   tipoProducto() {
 
@@ -180,18 +192,13 @@ export class MenuComponent implements OnInit {
       this.step = 2;
 
     } else if (this.tipo == "Joya") {
-      if (this.kilate == null) {
+      if (this.kilate == "") {
         this._snackBar.open("Digite los kilates de la joya", "", { duration: 5000 });
         this.step = 2;
-      } else if (this.gramos == null) {
+      } else if (this.gramos == "") {
         this._snackBar.open("Digite el peso de la joya", "", { duration: 5000 });
         this.step = 2;
-      } else {
-
-
-
-      }
-
+      } 
     } else {
       
 
@@ -201,15 +208,33 @@ export class MenuComponent implements OnInit {
     this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
     this.transaccion.ID_Admin = "1054924578";
 
-    this.metodo();
+    this.producto.Descripcion=this.descripcion;
+    this.producto.Nombre=this.nombreProducto;
+    this.producto.Precio_De_Compra=Number(this.precioProducto);
+    this.producto.Precio_De_Venta=Number(this.precioVentaProducto);
+    this.producto.Tipo=this.tipo;
+    this.producto.Kilates=Number(this.kilate);
+    this.producto.Kilogramos=Number(this.gramos);
+
+
+
+
+
+
+    this.save();
+
+    this.saveProducto();
+
+
+
 
     }
 
   }
 
-  metodo() {
-    this.save();
-  }
+  
+    
+  
 
 
 }
