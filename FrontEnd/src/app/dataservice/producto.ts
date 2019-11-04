@@ -6,6 +6,6 @@ export class Producto{
         Precio_De_Compra: number;
         Precio_De_Venta: number;
         Tipo: string;
-        Kilates: number;
-        Kilogramos: number;
+        Kilates: string;
+        Kilogramos: string;
 }

@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   id: string;
-  id_transaccion: number;
+  id_transaccion: string;
   nombre: string;
   precioC: number;
   tipo: string;
@@ -21,9 +21,9 @@ var ELEMENT_DATA: PeriodicElement[] = [];
 })
 export class InventarioComponent {
 
-  clientes: Producto[] = [];
+  prdouctos: Producto[] = [];
 
-  cliente = new Producto();
+  producto= new Producto();
 
   displayedColumns: string[] = ['Código', 'Transacción', 'Nombre', 'Precio', 'Tipo'];
   dataSource;
@@ -35,7 +35,7 @@ export class InventarioComponent {
 
 
   async getClientes() {
-    await this.dataService.getProductos().then(clientes => this.clientes = clientes);
+    await this.dataService.getProductos().then(productos => this.prdouctos = productos);
   }
 
   delete(cli): void {
@@ -61,11 +61,11 @@ export class InventarioComponent {
   }
 
   llenarDatos() {
-    console.log(this.clientes.length);
+    console.log(this.prdouctos.length);
     ELEMENT_DATA = [];
-    for (let i = 0; i < this.clientes.length; i++) {
-      console.log(this.clientes.length);
-      ELEMENT_DATA.push({ id: this.clientes[i].Id_Producto, id_transaccion: this.clientes[i].ID_Transaccion, nombre: this.clientes[i].Nombre, precioC: this.clientes[i].Precio_De_Compra, tipo: this.clientes[i].Tipo });
+    for (let i = 0; i < this.prdouctos.length; i++) {
+      console.log(this.prdouctos.length);
+      ELEMENT_DATA.push({ id: this.prdouctos[i].Id_Producto, id_transaccion: this.prdouctos[i].ID_Transaccion, nombre: this.prdouctos[i].Nombre, precioC: this.prdouctos[i].Precio_De_Compra, tipo: this.prdouctos[i].Tipo });
     }
   }
 

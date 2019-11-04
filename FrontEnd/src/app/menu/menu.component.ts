@@ -212,9 +212,9 @@ export class MenuComponent implements OnInit {
     this.producto.Nombre=this.nombreProducto;
     this.producto.Precio_De_Compra=Number(this.precioProducto);
     this.producto.Precio_De_Venta=Number(this.precioVentaProducto);
-    this.producto.Tipo=this.tipo;
-    this.producto.Kilates=Number(this.kilate);
-    this.producto.Kilogramos=Number(this.gramos);
+    this.producto.Tipo="P";
+    this.producto.Kilates=this.kilate;
+    this.producto.Kilogramos=this.gramos;
 
 
 
