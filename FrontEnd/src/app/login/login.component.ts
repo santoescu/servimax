@@ -45,11 +45,9 @@ export class LoginComponent implements OnInit {
         }
       }
 
-      localStorage.setItem ('tiempo', this.fechaInicial.toString())
-
-      // localStorage.setItem('hora', this.fechaInicial.getHours().toString());
-      // localStorage.setItem('minuto', this.fechaInicial.getMinutes().toString());
-      // localStorage.setItem('segundo', this.fechaInicial.getSeconds().toString());
+      localStorage.setItem('hora', this.fechaInicial.getHours().toString());
+      localStorage.setItem('minuto', this.fechaInicial.getMinutes().toString());
+      localStorage.setItem('segundo', this.fechaInicial.getSeconds().toString());
       
   }
 

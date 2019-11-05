@@ -97,22 +97,26 @@ export class NavigationComponent {
     var minutosI = localStorage.getItem('minuto');
     var segundosI = localStorage.getItem('segundo')
 
-    // var fechaF  = new Date()
+    var fechaF  = new Date()
 
-    // var horaF = fechaF.getHours();
-    // var minutosF = fechaF.getMinutes();
-    // var segundosF = fechaF.getSeconds();
+    var horaF = fechaF.getHours();
+    var minutosF = fechaF.getMinutes();
+    var segundosF = fechaF.getSeconds();
 
-    // console.log("ini: " + minutosI +" " + segundosI);
+    var hora1 = (horaI +":" + minutosI +":" + segundosI).split(":"),
+        hora2 = (horaF +":" + minutosF +":" + segundosF).split(":"),
+        t1 = new Date(),
+        t2 = new Date();
+ 
+    t1.setHours(parseInt(hora1[0]), parseInt(hora1[1]), parseInt(hora1[2]));
+    t2.setHours(parseInt(hora2[0]), parseInt(hora2[1]), parseInt(hora2[2]));
+    
+    //Aquí hago la resta
+    t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
 
-    // console.log("fi: " + minutosF+" " + segundosF);
-
-
-    var date = localStorage.getItem('tiempo')
-
-    var x = Date.parse(date);
-
-    console.log(x)
+    console.log(    document.body.innerHTML = "La diferencia es de: " + (t1.getHours() ? t1.getHours() + (t1.getHours() > 1 ? " horas" : " hora") : "") + (t1.getMinutes() ? ", " + t1.getMinutes() + (t1.getMinutes() > 1 ? " minutos" : " minuto") : "") + (t1.getSeconds() ? (t1.getHours() || t1.getMinutes() ? " y " : "") + t1.getSeconds() + (t1.getSeconds() > 1 ? " segundos" : " segundo") : ""));
+   
+    
 
     
 
