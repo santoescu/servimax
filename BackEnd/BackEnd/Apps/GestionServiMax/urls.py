@@ -29,6 +29,9 @@ urlpatterns = [
 	url(r'^Tiempo$', views.TiempoLista.as_view()),
 	url(r'Tiempo/(?P<pk>[0-9]+)$', views.TiempoDetalle.as_view()),
 
+	url(r'^Cartera$', views.CarteraLista.as_view()),
+	url(r'Cartera/(?P<pk>[0-9]+)$', views.CarteraDetalle.as_view()),
+
 	url(r'^Send/(?P<slug>[^@]+@[^@]+\.[^@]+)$',  csrf_exempt(SendViews.send_view)),
 
 	

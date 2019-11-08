@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajador, Transaccion, Producto, TiempoLaborado
+from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajador, Transaccion, Producto, TiempoLaborado, Cartera
 
 class AdministradorSerializador(serializers.ModelSerializer):
 	class Meta:
@@ -20,15 +20,20 @@ class TrabajadorSerializador(serializers.ModelSerializer):
 class TransaccionSerializador(serializers.ModelSerializer) :
 	class Meta:
 		model = Transaccion
-		fields = ('ID_Transaccion', 'Fecha', 'Tipo', 'ID_Cliente', 'ID_Trabajadores', 'ID_Admin')
+		fields = ('ID_Transaccion', 'Fecha','FechaRetiro', 'Tipo', 'ID_Cliente', 'ID_Trabajadores', 'ID_Admin')
 
 
 class ProductoSerializador(serializers.ModelSerializer):
 	class Meta:
 		model = Producto
-		fields = ('Id_Producto', 'ID_Transaccion', 'Nombre', 'Descripcion', 'Precio_De_Compra', 'Precio_De_Venta', 'Tipo', 'Kilates', 'Kilogramos')
+		fields = ('Id_Producto', 'ID_Transaccion', 'Nombre', 'Descripcion', 'Precio_De_Compra', 'Precio_De_Venta', 'Interes_Del_Prodcto', 'Tipo', 'Kilates', 'Kilogramos')
 
 class TiempoSerializador(serializers.ModelSerializer):
 	class Meta:
 		model = TiempoLaborado
-		fields = ('fecha', 'Id_Trabajador', 'horas', 'minutos', 'segundos')
+		fields = ('fecha', 'Id_Trabajador', 'horas')
+
+class CarteraSerializador(serializers.ModelSerializer):
+	class Meta:
+		model = Cartera
+		fields = ('ID', 'Fecha', 'Nombre', 'Precio_De_Compra', 'Precio_De_Venta', 'Ganacia')

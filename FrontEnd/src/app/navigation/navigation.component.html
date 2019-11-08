@@ -71,6 +71,15 @@
       <mat-divider></mat-divider>
 
       <mat-list-item>
+        <button class="menu-item" mat-flat-button [routerLink]="['cartera']">
+          <mat-icon>playlist_add_check</mat-icon>
+          Cartera
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
         <button class="menu-item" mat-flat-button [routerLink]="['login']" (click)="logout()" (click)="changeMessage()">
           <mat-icon>exit_to_app</mat-icon>
           Cerrar sesión

@@ -51,6 +51,7 @@ import {MatNativeDateModule} from '@angular/material';
 import { TrabajadoresComponent } from './trabajadores/trabajadores.component';
 import { AddTrabajadorComponent } from './trabajadores/add-trabajador/add-trabajador.component';
 import { HistorialComponent } from './historial/historial.component';
+import { CarteraComponent } from './cartera/cartera.component';
 
 
 
@@ -74,6 +75,7 @@ import { HistorialComponent } from './historial/historial.component';
     TrabajadoresComponent,
     AddTrabajadorComponent,
     HistorialComponent,
+    CarteraComponent,
 
   ],
   imports: [

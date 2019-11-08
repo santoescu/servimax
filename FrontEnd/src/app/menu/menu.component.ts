@@ -9,6 +9,7 @@ import { Trabajador } from './../dataservice/trabajador';
 import { Transaccion } from './../dataservice/transaccion';
 import { Producto } from './../dataservice/producto';
 import { Router } from '@angular/router';
+import { Cartera } from '../dataservice/cartera';
 
 
 
@@ -20,31 +21,51 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   transaccion = new Transaccion();
+  
   producto= new Producto();
 
 
   trabajadores: Trabajador[] = [];
+  productos: Producto[] = [];
+
   clientes: Cliente[] = [];
   transacciones: Transaccion[] = [];
 
 
   idTrabajador: number;
+  idProducto: number;
+
+
   myControl = new FormControl();
   options: string[] = [];
   idCliente: string[] = [];
   filteredOptions: Observable<string[]>;
   idclliente: string;
+
   fecha: Date;
+  fecha2: Date;
+
+  fechaSalida: Date;
+
+
   dia: string;
   mes: string;
   anio: string;
+
+  dia2: string;
+  mes2: string;
+  anio2: string;
+
   fechaFin: string = "";
+  fechaFin2: string = "";
+
   tipo: string = "Producto";
   descripcion: string = "";
   kilate: string = "0";
   gramos: string = "0";
   nombreProducto: string = "";
   precioProducto: string = "";
+  interesPactado: string = "";
   precioVentaProducto: string = "";
   ID_Transaccion: string = "";
 
@@ -64,12 +85,15 @@ export class MenuComponent implements OnInit {
       )
   }
 
+  
+
   redirect() {
     this.router.navigate(['./menu/transacciones'])
   }
 
 
   async saveProducto(){
+    await this.getTransacciones();
     var t = this.getUltimaTransaccion();
     this.producto.ID_Transaccion = t.ID_Transaccion;
     await this.dataService.createProducto(this.producto)
@@ -78,6 +102,7 @@ export class MenuComponent implements OnInit {
         () => console.log("Error"),
       )
   }
+
 
 
 
@@ -93,18 +118,47 @@ export class MenuComponent implements OnInit {
     await this.dataService.getTransacciones().then(transacciones => this.transacciones = transacciones);
    }
 
-   getUltimaTransaccion(): Transaccion{
+  async getProductos(){
+    await this.dataService.getProductos().then(productos => this.productos = productos);
+  }
+
+  getUltimaTransaccion(): Transaccion{
      console.log("tam " + this.transacciones.length)
 
      var t : Transaccion = this.transacciones[this.transacciones.length - 1];
 
      return t;
+  }
+
+   delete(id: Number):void{
+    this.dataService.deleteProducto(id);
+  }   
+   /**
+    * Devuelve el prodcuto, indicado con el id de parámetro
+    */
+   getProducto(idProducto: Number): Producto{
+
+      for(let i = 0; i <this.productos.length; i++){
+        if(this.productos[i].Id_Producto == idProducto){
+          return this.productos[i];
+        }
+      }
    }
+
+   async crearCartera(cartera: Cartera){
+    await this.dataService.crearCartera(cartera)
+      .then(
+        () => this.redirect(),
+        () => console.log("Error"),
+      )
+  }
 
 
   async ngOnInit() {
    await this.getClientes();
    await this.getTrabajadores();
+   await this.getTransacciones();
+   await this.getProductos();
    this.llenarOptions();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -148,9 +202,12 @@ export class MenuComponent implements OnInit {
 
   trabajadorControl = new FormControl('', [Validators.required]);
   productoControl = new FormControl('', [Validators.required]);
+  productoControl2 = new FormControl('', [Validators.required]);
+
 
   productoPrecioControl = new FormControl('', [Validators.required]);
   tipoProductoControl = new FormControl('', [Validators.required]);
+  interesPactadoControl = new FormControl('', [Validators.required]);
 
 
   idCedula(valor: String) {
@@ -173,6 +230,15 @@ export class MenuComponent implements OnInit {
     this.anio = this.fecha.getFullYear().toString();
     this.fechaFin = this.dia + "/" + this.mes + "/" + this.anio;
     
+  }
+
+  obtenerFechaRetiro(){
+
+    this.dia2 = this.fecha2.getDate().toString();
+    this.mes2 = (this.fecha2.getMonth() + 1).toString();
+    this.anio2 = this.fecha2.getFullYear().toString();
+    this.fechaFin2 = this.dia2 + "/" + this.mes2 + "/" + this.anio2;
+
   }
   tipoProducto() {
 
@@ -204,7 +270,7 @@ export class MenuComponent implements OnInit {
     this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
     this.transaccion.ID_Admin = "1054924578";
 
-    await this.getTransacciones();
+    // await this.getTransacciones();
     await this.save();
 
   }
@@ -229,6 +295,7 @@ export class MenuComponent implements OnInit {
     this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
     this.transaccion.ID_Admin = "1054924578";
     await this.save();
+    
 
   }
 
@@ -247,10 +314,12 @@ export class MenuComponent implements OnInit {
       this.step = 1;
     } else{
     this.transaccion.Fecha = this.fechaFin;
+    this.transaccion.FechaRetiro = this.fechaFin2;
     this.transaccion.Tipo = "E";
     this.transaccion.ID_Cliente = this.idclliente;
     this.transaccion.ID_Trabajadores = this.idTrabajador.toString();
     this.transaccion.ID_Admin = "1054924578";
+    
     await this.save();
 
   }
@@ -274,19 +343,34 @@ export class MenuComponent implements OnInit {
         this._snackBar.open("Digite el peso de la joya", "", { duration: 5000 });
         this.step = 2;
       } 
-    } else {
-      
+    } else if(this.transaccion.Tipo == 'V'){
+      console.log("opción venta")
+
+      var cartera = new Cartera(this.transaccion.Fecha, this.producto.Nombre, this.producto.Precio_De_Compra, this.producto.Precio_De_Venta);
+
+      await this.crearCartera(cartera);
+
+      this.delete(this.idProducto);
+      }else{
+        this.producto.Descripcion=this.descripcion;
+        this.producto.Nombre=this.nombreProducto;
+        this.producto.Precio_De_Compra=Number(this.precioProducto);
+        this.producto.Interes_Del_Prodcto = parseFloat(this.interesPactado);
+        this.producto.Precio_De_Venta=Number(parseInt(  (this.producto.Precio_De_Compra*( 1 + 0.1)).toString()    ));
+
+        console.log(typeof(this.producto.Precio_De_Venta));
+        this.producto.Tipo=this.tipo;
+        this.producto.Kilates=this.kilate;
+        this.producto.Kilogramos=this.gramos;
+        await this.saveProducto();
+      }
+    this.getProductos();
     
-    console.log("sdffsdafdsfsdfsd " + this.producto.ID_Transaccion)
-    this.producto.Descripcion=this.descripcion;
-    this.producto.Nombre=this.nombreProducto;
-    this.producto.Precio_De_Compra=Number(this.precioProducto);
-    this.producto.Precio_De_Venta=Number(this.precioVentaProducto);
-    this.producto.Tipo=this.tipo;
-    this.producto.Kilates=this.kilate;
-    this.producto.Kilogramos=this.gramos;
-   await this.saveProducto();
-    }
+
+  }
+
+  mostrar(){
+    console.log(this.fecha2.getDate() +"/"+this.fecha2.getMonth() +1+ "/" + this.fecha2.getFullYear())
 
   }
 

@@ -5,6 +5,8 @@ import { DataService } from './../dataservice/data.service';
 import { Trabajador } from './../dataservice/trabajador';
 import { UserMaster} from '../app.service';
 import { Administrador } from '../dataservice/administrador';
+import * as moment from 'moment';
+import 'moment/locale/bo';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +16,11 @@ import { Administrador } from '../dataservice/administrador';
 export class LoginComponent implements OnInit {
 
   trabajadores : Trabajador[]=[];
-
+  fechaInicial = new Date();
   message: string;
   editMessage: string;
 
-  fechaInicial = new Date();
+  
 
   getTrabajadores():void{
     this.dataService.getTrabajadores().then(trabajadores => this.trabajadores = trabajadores);
@@ -45,9 +47,19 @@ export class LoginComponent implements OnInit {
         }
       }
 
-      localStorage.setItem('hora', this.fechaInicial.getHours().toString());
-      localStorage.setItem('minuto', this.fechaInicial.getMinutes().toString());
-      localStorage.setItem('segundo', this.fechaInicial.getSeconds().toString());
+      var now = moment(new Date());
+
+
+      localStorage.setItem('x', now.toJSON())
+      
+
+      
+      
+      
+      
+      // localStorage.setItem('hora', this.fechaInicial.getHours().toString());
+      // localStorage.setItem('minuto', this.fechaInicial.getMinutes().toString());
+      // localStorage.setItem('segundo', this.fechaInicial.getSeconds().toString());
       
   }
 

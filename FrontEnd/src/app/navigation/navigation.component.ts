@@ -7,7 +7,8 @@ import { UserMaster} from '../app.service';
 import { DataService } from './../dataservice/data.service';
 import { TiempoLaborado } from '../dataservice/tiempo-laborado';
 import { Trabajador } from '../dataservice/trabajador';
-
+import * as moment from 'moment';
+import 'moment/locale/bo';
 
 
 
@@ -35,11 +36,16 @@ export class NavigationComponent {
   editMessage: string;
 
   trabajadorJSON = localStorage.getItem('email');
+  trabajador : Trabajador;
   nombre: string;
 
   dia: number;
   mes: number;
   anio: number;
+
+  horaSalida: number;
+  minutoSalida: number;
+
 
   prueba: string;
 
@@ -55,9 +61,9 @@ export class NavigationComponent {
      this.mes = this.fecha.getMonth()+1;
      this.anio = this.fecha.getFullYear();
 
-     var aux: Trabajador = JSON.parse(this.trabajadorJSON);
+     this.trabajador = JSON.parse(this.trabajadorJSON);
 
-     this.nombre = aux.Nombres + " " + aux.Primer_Apellido;
+     this.nombre = this.trabajador.Nombres + " " + this.trabajador.Primer_Apellido;
   }
 
   ngOnInit() {
@@ -79,6 +85,8 @@ export class NavigationComponent {
         this.minutos = 0;
       }
 
+      
+
       this.tiempo =`${this.horas}H: ${this.minutos}M: ${this.segundos}s`;
       this.segundos = this.segundos + 1;
 
@@ -92,35 +100,28 @@ export class NavigationComponent {
   logout(){
     localStorage.removeItem('email');
     this.router.navigate(['/login']);
-
-    var horaI = localStorage.getItem('hora');
-    var minutosI = localStorage.getItem('minuto');
-    var segundosI = localStorage.getItem('segundo')
-
-    var fechaF  = new Date()
-
-    var horaF = fechaF.getHours();
-    var minutosF = fechaF.getMinutes();
-    var segundosF = fechaF.getSeconds();
-
-    var hora1 = (horaI +":" + minutosI +":" + segundosI).split(":"),
-        hora2 = (horaF +":" + minutosF +":" + segundosF).split(":"),
-        t1 = new Date(),
-        t2 = new Date();
- 
-    t1.setHours(parseInt(hora1[0]), parseInt(hora1[1]), parseInt(hora1[2]));
-    t2.setHours(parseInt(hora2[0]), parseInt(hora2[1]), parseInt(hora2[2]));
     
-    //Aquí hago la resta
-    t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
+    var json = localStorage.getItem('x');
+    var now = new Date(json);
 
-    console.log(    document.body.innerHTML = "La diferencia es de: " + (t1.getHours() ? t1.getHours() + (t1.getHours() > 1 ? " horas" : " hora") : "") + (t1.getMinutes() ? ", " + t1.getMinutes() + (t1.getMinutes() > 1 ? " minutos" : " minuto") : "") + (t1.getSeconds() ? (t1.getHours() || t1.getMinutes() ? " y " : "") + t1.getSeconds() + (t1.getSeconds() > 1 ? " segundos" : " segundo") : ""));
-   
+    var end = moment(new Date())
+
+    var duration = moment.duration(end.diff(now));
+    var hours = duration.asHours();
     
 
-    
+    this.dia = this.fecha.getDate();
+    this.mes = this.fecha.getMonth()+1;
+    this.anio = this.fecha.getFullYear();
 
-    //this.enviarDatos();
+    var fechaTrabajo = this.dia +"/"+this.mes+"/"+this.anio;
+
+  
+
+
+    
+    
+    this.enviarDatos(fechaTrabajo, hours);
     
   }
 
@@ -134,19 +135,16 @@ export class NavigationComponent {
     }
   }
 
-  enviarDatos(): void{
+ 
+
+  enviarDatos(fecha:string, horas:number): void{
+
 
     
 
-    var salida = this.dia + "/" + this.mes + "/" + this.anio;
+    var tiempoLaborado = new TiempoLaborado(fecha, this.trabajador.Id_Trabajador.toString(), horas);
 
-    var tiempoLaborado = new TiempoLaborado();
-
-    tiempoLaborado.setFecha(salida);
-    tiempoLaborado.setHoras(this.horas.toString());
-    tiempoLaborado.setIdTrabajador("1053825754");
-    tiempoLaborado.setMinutos(this.minutos.toString());
-    tiempoLaborado.setSegundos(this.segundos.toString());  
+    console.log("horas: " + tiempoLaborado.horas)
 
     
 

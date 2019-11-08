@@ -13,8 +13,6 @@ export class MailComponent implements OnInit {
 
   trabajadores: TiempoLaborado[] = [];
 
-  trabajador = new TiempoLaborado();
-
   getTrabajadores(): void {
     this.dataService.getTiempos().then(trabajadores => this.trabajadores = trabajadores);
   }

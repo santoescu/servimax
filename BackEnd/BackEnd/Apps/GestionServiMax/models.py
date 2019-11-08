@@ -65,6 +65,7 @@ class Trabajador (models.Model):
 class Transaccion(models.Model):
     ID_Transaccion = models.AutoField(primary_key=True)
     Fecha = models.CharField(max_length=10,null=False,blank=False)
+    FechaRetiro = models.CharField(max_length=10,null=False,blank=False, default = "")
     Tipo = models.CharField(max_length=1, default='C')
     ID_Cliente = models.ForeignKey(Cliente, null = False, blank= False, on_delete=models.CASCADE)
     ID_Trabajadores = models.ForeignKey(Trabajador, null = False, blank= False, on_delete=models.CASCADE)
@@ -85,6 +86,7 @@ class Producto(models.Model):
     Descripcion = models.TextField(blank = True, null = True)
     Precio_De_Compra = models.PositiveSmallIntegerField(blank = True, null = True)
     Precio_De_Venta = models.PositiveSmallIntegerField(blank = True, null = True)
+    Interes_Del_Prodcto = models.DecimalField(decimal_places = 2, max_digits = 3,blank = True, null = True)
 
     Tipos = (('J', 'Joya'), ('P', 'Producto'))
     Tipo = models.CharField(max_length=1, choices=Tipos, default='M')
@@ -104,13 +106,27 @@ class TiempoLaborado(models.Model):
 
     Id_Trabajador = models.ForeignKey(Trabajador, null = False, blank = False, on_delete = models.CASCADE)
 
-    horas = models.CharField(max_length=2)
-    minutos = models.CharField(max_length=2)
-    segundos = models.CharField(max_length=4)
+    horas = models.DecimalField(decimal_places = 4, max_digits = 7)
 
     def obtenerDatosTiempo(self):
-        cadena = "{0} {1}, {2}"
-        return cadena.format(self.fecha, self.horas, self.minutos)
+        cadena = "{0}, {1}"
+        return cadena.format(self.fecha, self.horas)
 
     def __str__(self):
         return self.obtenerDatosTiempo()
+
+class Cartera(models.Model):
+    ID = models.AutoField(primary_key = True)
+    Fecha = models.CharField(max_length=10,null=False,blank=False, default = "")
+    Nombre = models.CharField(max_length = 20)
+    Precio_De_Compra = models.PositiveSmallIntegerField(blank = True, null = True)
+    Precio_De_Venta = models.PositiveSmallIntegerField(blank = True, null = True) 
+    Ganacia = models.PositiveSmallIntegerField(blank = True, null = True)
+
+    
+
+    def obtenerDatosCartera(self):
+        cadena = "{0}, {1}, {2}, {3},{4},{5}"
+        return cadena.format(self.ID, self.Fecha, self.Nombre, self.Precio_De_Compra, self.Precio_De_Venta, self.Ganacia)
+    def __str__(self):
+        return self.obtenerDatosCartera()

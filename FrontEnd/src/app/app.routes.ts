@@ -15,6 +15,7 @@ import {AddClienteComponent} from "./clientes/add-cliente/add-cliente.component"
 import {TrabajadoresComponent} from './trabajadores/trabajadores.component';
 import {AddTrabajadorComponent} from './trabajadores/add-trabajador/add-trabajador.component';
 import { HistorialComponent } from "./historial/historial.component";
+import { CarteraComponent } from "./cartera/cartera.component";
 
 
 
@@ -49,6 +50,8 @@ const ROUTES: Routes = [
         { path: 'mail', component: MailComponent, canActivate: [LoginGuard]},
 
         { path: 'historial', component: HistorialComponent, canActivate: [LoginGuard]},
+        { path: 'cartera', component: CarteraComponent, canActivate: [LoginGuard]},
+        
 
         { 
             path: 'trabajadores',

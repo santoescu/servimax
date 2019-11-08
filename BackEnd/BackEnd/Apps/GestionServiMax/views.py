@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 from rest_framework import generics
 
-from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajador, Transaccion, Producto, TiempoLaborado
+from BackEnd.Apps.GestionServiMax.models import Administrador, Cliente, Trabajador, Transaccion, Producto, TiempoLaborado, Cartera
 
-from BackEnd.Apps.GestionServiMax.serializador import AdministradorSerializador, ClienteSerializador, TrabajadorSerializador, TransaccionSerializador, ProductoSerializador, TiempoSerializador
+from BackEnd.Apps.GestionServiMax.serializador import AdministradorSerializador, ClienteSerializador, TrabajadorSerializador, TransaccionSerializador, ProductoSerializador, TiempoSerializador, CarteraSerializador
 
 
 # Create your views here.
@@ -59,4 +59,14 @@ class TiempoLista(generics.ListCreateAPIView):
 class TiempoDetalle(generics.RetrieveUpdateDestroyAPIView):
 	queryset = TiempoLaborado.objects.all()
 	serializer_class = TiempoSerializador
+
+class CarteraLista(generics.ListCreateAPIView):
+	queryset = Cartera.objects.all()
+	serializer_class = CarteraSerializador
+
+class CarteraDetalle(generics.RetrieveUpdateDestroyAPIView):
+	queryset = Cartera.objects.all()
+	serializer_class = CarteraSerializador
+
+
 
