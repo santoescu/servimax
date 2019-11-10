@@ -27,6 +27,12 @@ export class DataService{
 				.toPromise()
 				.then(response => response.json() as Producto[])
 		}
+		getCarteras(): Promise<Cartera[]> {
+			return this.http.get('http://localhost:8000/Cartera?format=json', {headers: this.headers})
+				.toPromise()
+				.then(response => response.json() as Cartera[])
+		}
+
 		getProducto(id: Number): Promise<Producto> {
 			const url = `${"http://localhost:8000/Producto"}/${id}?format=json`;
 			return this.http.get(url, {headers: this.headers})
@@ -119,8 +125,7 @@ export class DataService{
 		}
 
 		createProducto(d: Producto): Promise<Producto> {
-			// d.Id_Producto = "20";
-			// d.ID_Transaccion="20";
+			
 			return this.http
 			.post("http://localhost:8000/Producto", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
@@ -128,8 +133,7 @@ export class DataService{
 		}
 
 		crearCartera(d: Cartera): Promise<Cartera> {
-			// d.Id_Producto = "20";
-			// d.ID_Transaccion="20";
+			
 			return this.http
 			.post("http://localhost:8000/Cartera", JSON.stringify(d), {headers: this.headers})
 			.toPromise()
